@@ -436,13 +436,10 @@ nav {
     border: none;
 }
 
-.localisation-second {
-    display: none;
-}
-
 #prev {
     background: url('../imgs/arrow.svg') no-repeat;
     background-position: center;
+    cursor: pointer;
     transform: rotate(180deg);
     margin-bottom: 60px;
 }
@@ -450,6 +447,7 @@ nav {
 #next {
     background: url('../imgs/arrow.svg') no-repeat;
     background-position: center;
+    cursor: pointer;
     margin-bottom: 60px;
 }
 
@@ -484,10 +482,6 @@ nav {
     #prev,
     #next {
         display: none;
-    }
-
-    .localisation-second {
-        display: block;
     }
 }
 
