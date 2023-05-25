@@ -57,7 +57,13 @@ body {
         margin-left: 160px;
         margin-right: 160px;
     }
+
+    body {
+        width: 1440px;
+        margin: 0 auto;
+    }
 }
+
 
 /*Nav*/
 nav {
@@ -91,6 +97,7 @@ nav {
 
 .btn-contact-tab {
     display: none;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 650px) {
@@ -159,6 +166,7 @@ nav {
     border: none;
     border-radius: 5px;
     color: #fff;
+    cursor: pointer;
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 60px;
@@ -288,13 +296,22 @@ nav {
 
 @media screen and (min-width: 1440px) {
     .landscape-img {
-        right: 450px;
+        right: 480px;
     }
 
     .desktop-infos {
         right: 175px;
     }
+}
 
+@media screen and (min-width: 1700px) {
+    .landscape-img {
+        right: 580px;
+    }
+
+    .desktop-infos {
+        right: 300px;
+    }
 }
 
 /*Section Infos*/
