@@ -549,3 +549,101 @@ nav {
         font-size: 14px;
     }
 }
+
+/* Modal */
+
+.modal-container {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 60%);
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99;
+}
+
+.modal {
+    align-items: center;
+    background-color: var(--background);
+    box-shadow: 0px 3px 5px 5px rgba(0, 0, 0, 15%);
+    height: max-content;
+    padding: 20px;
+    position: relative;
+    width: 400px;
+}
+
+.modal p {
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.modal input[type="text"],
+.modal input[type="email"],
+.modal select {
+    border-radius: 0;
+    padding: 7px;
+    flex-basis: 100%;
+    flex-grow: 1;
+    margin: 5px 0 15px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 25px;
+    height: 25px;
+    border: 0;
+    background-color: var(--secondary-color);
+    color: white;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    background-color: #eee;
+    color: var(--secondary-color);
+}
+
+.close-modal:active {
+    transform: scale(0.8);
+}
+
+.modal-wrapper {
+    display: flex;
+    flex-basis: 100%;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.modal-wrapper input[type="submit"],
+.modal-wrapper input[type="reset"] {
+    border-radius: 0;
+    cursor: pointer;
+    padding: 5px 20px;
+    margin-top: 10px;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder {
+    font-style: italic;
+}
+
+textarea {
+    padding: 10px;
+}
+
+textarea::placeholder {
+    font-style: italic;
+}
