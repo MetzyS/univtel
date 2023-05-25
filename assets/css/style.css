@@ -43,6 +43,22 @@ body {
     }
 }
 
+/* -- desktop -- */
+@media screen and (min-width:1200px) {
+    .margin {
+        margin-left: 80px;
+        margin-right: 80px;
+    }
+}
+
+/* -- big screens -- */
+@media screen and (min-width:1440px) {
+    .margin {
+        margin-left: 160px;
+        margin-right: 160px;
+    }
+}
+
 /*Nav*/
 nav {
     align-items: center;
@@ -160,6 +176,10 @@ nav {
     margin-bottom: 60px;
 }
 
+.desktop-infos {
+    display: none;
+}
+
 @media screen and (min-width:650px) {
 
     .contact {
@@ -229,6 +249,53 @@ nav {
     }
 }
 
+@media screen and (min-width: 1024px) {
+    .contact-title {
+        max-width: 65%;
+    }
+
+    .contact-title,
+    .contact-title--accent {
+        font-size: 65px;
+    }
+
+    .contact-text {
+        font-size: 20px;
+    }
+
+    .landscape-img {
+        background: url('../imgs/desktop_img.jpg') no-repeat;
+        height: 604px;
+        width: 348px;
+        right: 45px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .landscape-img {
+        right: 350px;
+    }
+
+    .desktop-infos {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+        position: absolute;
+        right: 65px;
+        top: 200px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .landscape-img {
+        right: 450px;
+    }
+
+    .desktop-infos {
+        right: 175px;
+    }
+
+}
 
 /*Section Infos*/
 .infos {
@@ -279,6 +346,12 @@ nav {
 
     .infos-text-m {
         margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .infos {
+        display: none;
     }
 }
 
@@ -401,6 +474,19 @@ nav {
     }
 }
 
+@media screen and (min-width:1200px) {
+    .localisation {
+        margin-top: 85px;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .localisation {
+        margin-left: 160px;
+        margin-right: 160px;
+    }
+}
+
 /*Footer*/
 
 .footer {
@@ -438,8 +524,17 @@ nav {
         width: 58px;
     }
 
+    .footer-text {
+        font-size: 12px;
+    }
+
     .facebook {
-        height: 27px;
-        width: 27px;
+        transform: scale(1.5);
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .footer-text {
+        font-size: 14px;
     }
 }
