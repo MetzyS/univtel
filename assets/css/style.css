@@ -591,11 +591,13 @@ nav {
 .modal input[type="text"],
 .modal input[type="email"],
 .modal select {
+    border: 1px solid gray;
     border-radius: 0;
     padding: 7px;
     flex-basis: 100%;
     flex-grow: 1;
     margin: 5px 0 15px;
+    outline: none;
 }
 
 .close-modal {
@@ -629,6 +631,7 @@ nav {
 
 .modal-wrapper input[type="submit"],
 .modal-wrapper input[type="reset"] {
+    border: 1px solid gray;
     border-radius: 0;
     cursor: pointer;
     padding: 5px 20px;
@@ -640,10 +643,19 @@ input[type="email"]::placeholder {
     font-style: italic;
 }
 
+option:checked {
+    color: var(--secondary-color);
+}
+
 textarea {
     padding: 10px;
+    outline: none;
 }
 
 textarea::placeholder {
     font-style: italic;
+}
+
+.form-label {
+    font-weight: 600;
 }
