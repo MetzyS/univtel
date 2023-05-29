@@ -7,6 +7,7 @@ let body = document.querySelector('body');
 let btnContact = document.querySelector('.btn-contact');
 let btnContactHeader = document.querySelector('.btn-contact-tab');
 
+
 /* Conditions d'affichage du caroussel */
 window.addEventListener('load', function () {
     if (window.innerWidth > 650) {
@@ -62,8 +63,6 @@ function createModal() {
     let modalBtnClose = document.createElement('button');
     let modalForm = document.createElement('form');
     let modalTitle = document.createElement('p');
-    let modalLabelName = document.createElement('label');
-    let modalInputName = document.createElement('input');
     let modalLabelEmail = document.createElement('label');
     let modalInputEmail = document.createElement('input');
     let modalLabelSelect = document.createElement('label');
@@ -85,7 +84,7 @@ function createModal() {
     modalForm.classList.add('form');
     modalBtnWrapper.classList.add('modal-wrapper')
     modalTitle.textContent = 'Formulaire de contact';
-    modalLabelName.classList.add('form-label')
+    // modalLabelName.classList.add('form-label')
     modalLabelEmail.classList.add('form-label')
     modalLabelSelect.classList.add('form-label')
     modalLabelTextArea.classList.add('form-label')
@@ -96,15 +95,16 @@ function createModal() {
     modalForm.setAttribute('method', 'POST');
     modalForm.setAttribute('action', 'traitement/contact.php');
 
-    modalLabelName.textContent = 'Votre nom';
-    modalInputName.setAttribute('type', 'text');
-    modalInputName.setAttribute('name', 'name');
-    modalInputName.setAttribute('placeholder', 'Nom...');
-    modalInputName.id = 'name';
+    // modalLabelName.textContent = 'Votre nom';
+    // modalInputName.setAttribute('type', 'text');
+    // modalInputName.setAttribute('name', 'name');
+    // modalInputName.setAttribute('placeholder', 'Nom...');
+    // modalInputName.id = 'name';
 
     modalLabelEmail.textContent = 'Votre adresse email';
     modalInputEmail.setAttribute('type', 'email');
     modalInputEmail.setAttribute('name', 'email');
+    modalInputEmail.setAttribute('maxlength', '90');
     modalInputEmail.setAttribute('placeholder', 'exemple@mail.com');
     modalInputEmail.id = 'email';
 
@@ -125,6 +125,7 @@ function createModal() {
     modalInputTextArea.setAttribute('placeholder', 'Ecrivez votre message ici...');
     modalInputTextArea.setAttribute('cols', '10');
     modalInputTextArea.setAttribute('rows', '8');
+    modalInputTextArea.setAttribute('maxlength', '500');
     modalInputTextArea.id = 'message';
 
     modalBtnReset.setAttribute('type', 'reset');
@@ -134,7 +135,7 @@ function createModal() {
 
 
     /* Ajout 'for' label */
-    modalLabelName.htmlFor = 'name';
+    // modalLabelName.htmlFor = 'name';
     modalLabelEmail.htmlFor = 'email';
     modalLabelSelect.htmlFor = 'subject';
     modalLabelTextArea.htmlFor = 'message';
@@ -143,7 +144,8 @@ function createModal() {
     body.prepend(modalContainer);
     modalContainer.appendChild(modal);
     modal.append(modalBtnClose, modalForm);
-    modalForm.append(modalTitle, modalLabelName, modalInputName, modalLabelEmail, modalInputEmail, modalLabelSelect, modalSelect, modalLabelTextArea, modalInputTextArea, modalBtnWrapper);
+    // modalForm.append(modalTitle, modalLabelName, modalInputName, modalLabelEmail, modalInputEmail, modalLabelSelect, modalSelect, modalLabelTextArea, modalInputTextArea, modalBtnWrapper);
+    modalForm.append(modalTitle, modalLabelEmail, modalInputEmail, modalLabelSelect, modalSelect, modalLabelTextArea, modalInputTextArea, modalBtnWrapper);
     modalSelect.append(modalFirstOption, modalSecondOption, modalThirdOpion);
     modalBtnWrapper.append(modalBtnReset, modalBtnSubmit);
 

@@ -92,7 +92,7 @@ session_start();
                         <div class="caroussel-nav">
                             <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1450.7115723317936!2d3.2183173407605974!3d43.34725875036921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b10e6205afd4e3%3A0xbd48e60e96a6de7b!2sL&#39;univers%20du%20t%C3%A9l%C3%A9phone!5e0!3m2!1sfr!2sfr!4v1684974919627!5m2!1sfr!2sfr" class="maps" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
                         </div>
-                        <p class="caroussel-num">09 51 53 52 46</p>
+                        <p class="number"><span class="caroussel-num">tel: </span><a href="tel:+33973180907" class="caroussel-num">09 51 53 52 46</a></p>
                     </div>
                     <div class="localisation-second none">
                         <p class="caroussel-title"><span class="caroussel-title--accent">Pézenas</span> - 25 Rue
@@ -101,7 +101,7 @@ session_start();
                         <div class="caroussel-nav">
                             <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2896.078128397478!2d3.4200603767099182!3d43.45896606497085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b141e7acc15bf9%3A0xfdac061425bd4c0!2sL&#39;univers%20du%20t%C3%A9l%C3%A9phone%20-%20R%C3%A9paration%20t%C3%A9l%C3%A9phonique%2FPC%2Ftablette%20toutes%20marques!5e0!3m2!1sfr!2sfr!4v1685012918938!5m2!1sfr!2sfr" class="maps" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
                         </div>
-                        <p class="caroussel-num">09 73 18 09 07</p>
+                        <p class="number"><span class="caroussel-num">tel: </span><a href="tel:+33973180907" class="caroussel-num">09 73 18 09 07</a></p>
                     </div>
                 </div>
                 <input type="button" value="next" class="mobile-nav" id="next">
