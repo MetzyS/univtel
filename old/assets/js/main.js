@@ -93,7 +93,13 @@ function createModal() {
     modalBtnClose.textContent = 'X';
 
     modalForm.setAttribute('method', 'POST');
-    modalForm.setAttribute('action', '/www/univtel/app/views/home/processing/contact.php');
+    modalForm.setAttribute('action', 'traitement/contact.php');
+
+    // modalLabelName.textContent = 'Votre nom';
+    // modalInputName.setAttribute('type', 'text');
+    // modalInputName.setAttribute('name', 'name');
+    // modalInputName.setAttribute('placeholder', 'Nom...');
+    // modalInputName.id = 'name';
 
     modalLabelEmail.textContent = 'Votre adresse email';
     modalInputEmail.setAttribute('type', 'email');
