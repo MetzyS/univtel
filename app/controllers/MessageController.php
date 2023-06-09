@@ -2,6 +2,12 @@
 
 class Message extends M_Message
 {
+    protected $model;
+
+    public function __construct()
+    {
+        $this->model = new M_Message;
+    }
     public function index()
     {
     }
