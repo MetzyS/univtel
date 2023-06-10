@@ -100,6 +100,27 @@ nav {
     cursor: pointer;
 }
 
+.link-logout {
+    background: #fff;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    color: var(--secondary-color);
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 3px;
+}
+
+.link-logout:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.link-logout:active {
+    transform: scale(0.98);
+}
+
+
 @media screen and (min-width: 650px) {
     .logo {
         background: url('../imgs/logo_desktop.svg') no-repeat;
@@ -112,7 +133,8 @@ nav {
         display: none;
     }
 
-    .btn-contact-tab {
+    .btn-contact-tab,
+    .link-logout {
         background: #fff;
         border: 1px solid var(--secondary-color);
         border-radius: 5px;
@@ -765,4 +787,11 @@ textarea::placeholder {
         width: 350px;
         margin: 0 auto;
     }
+}
+
+.link-logout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }

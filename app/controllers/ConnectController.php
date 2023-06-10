@@ -24,17 +24,20 @@ class Connect extends M_Connect
             if (isset($_SESSION['mail']) && isset($_SESSION['password'])) {
                 $mail = $_SESSION['mail'];
                 $password = $_SESSION['password'];
-                unset($_SESSION);
+                unset($_SESSION['mail'], $_SESSION['password']);
                 if ($this->validator->mailRegex($mail)) {
-                    echo 'ok';
+                    if (isset($_SESSION['user'])) {
+                        unset($_SESSION['user']);
+                    }
+                    $user = $this->model->checkUser($mail, $password);
+                    $_SESSION['user'] = $user;
+                    $this->model->redirect('message/index');
                 } else {
                     $message = 'Format de l&#39;adresse mail invalide.';
                     $this->model->view('connect/index', [
                         'message' => $message
                     ]);
                 }
-
-                $user = $this->model->checkUser($mail, $password);
             } else {
                 $this->redirect('home/index'); // 404 !!
             }

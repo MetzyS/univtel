@@ -20,4 +20,9 @@ class ComponentsConnexion
     </form>
     ';
     }
+
+    public function logoutBtn()
+    {
+        echo '<a href="/www/univtel/app/views/connect/processing/logout.php" class="link-logout">Déconnexion</a>';
+    }
 }
