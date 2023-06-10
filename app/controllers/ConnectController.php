@@ -3,9 +3,11 @@
 class Connect extends M_Connect
 {
     protected $model;
+    protected $validator;
     public function __construct()
     {
         $this->model = new M_Connect;
+        $this->validator = new Validator;
     }
     public function index()
     {
@@ -23,8 +25,16 @@ class Connect extends M_Connect
                 $mail = $_SESSION['mail'];
                 $password = $_SESSION['password'];
                 unset($_SESSION);
+                if ($this->validator->mailRegex($mail)) {
+                    echo 'ok';
+                } else {
+                    $message = 'Format de l&#39;adresse mail invalide.';
+                    $this->model->view('connect/index', [
+                        'message' => $message
+                    ]);
+                }
 
-                $user = $this->model->connect($mail, $password);
+                $user = $this->model->checkUser($mail, $password);
             } else {
                 $this->redirect('home/index'); // 404 !!
             }

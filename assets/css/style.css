@@ -123,6 +123,15 @@ nav {
         height: 50px;
         width: 210px;
     }
+
+    .btn-contact-tab:hover {
+        background-color: var(--secondary-color);
+        color: white;
+    }
+
+    .btn-contact-tab:active {
+        transform: scale(0.98);
+    }
 }
 
 /*Section Contact*/
@@ -172,6 +181,16 @@ nav {
     margin-bottom: 60px;
     height: 50px;
     width: 215px;
+}
+
+.btn-contact:hover {
+    color: var(--secondary-color);
+    background-color: white;
+    border: 1px solid var(--secondary-color);
+}
+
+.btn-contact:active {
+    transform: scale(0.98);
 }
 
 .contact-img {
@@ -677,4 +696,73 @@ textarea::placeholder {
 .number {
     margin-bottom: 35px;
     text-align: center;
+}
+
+.connexion-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.connexion-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container input {
+    height: 25px;
+}
+
+.input-container input[type="submit"] {
+    background-color: var(--primary-color);
+    border: 1px transparent;
+    color: white;
+    height: 35px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+.input-container input[type="submit"]:hover {
+    background-color: white;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.input-container input[type="submit"]:active {
+    transform: scale(0.97);
+}
+
+.input-container input[type="email"],
+.input-container input[type="password"] {
+    font-size: 18px;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    background-color: #ffc6c7;
+}
+
+@media screen and (min-width:650px) {
+    .connexion-title {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .connexion-form {
+        height: 50vh;
+        margin: 0 auto;
+        width: 350px;
+    }
+
+    .error-message {
+        width: 350px;
+        margin: 0 auto;
+    }
 }

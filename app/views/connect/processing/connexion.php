@@ -13,11 +13,8 @@ if ($_POST['mail'] && $_POST['password']) {
     $_SESSION['mail'] = $mail;
     $_SESSION['password'] = $password;
 
-    echo '<pre>';
-    var_dump($_SESSION);
-    die();
     header('Location: /www/univtel/connect/connect');
     exit();
 } else {
-    $this->redirect('home/index'); // 404 !!
+    header('Location: /www/univtel/home/index'); // 404
 }
