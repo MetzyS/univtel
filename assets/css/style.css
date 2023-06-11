@@ -243,11 +243,8 @@ nav {
         max-width: 65%;
     }
 
+    .contact-text,
     .confirm-msg {
-        font-size: 16px;
-    }
-
-    .contact-text {
         font-size: 16px;
         margin-top: 60px;
         max-width: 55%;
@@ -338,6 +335,10 @@ nav {
         position: absolute;
         right: 65px;
         top: 200px;
+    }
+
+    .confirm-msg {
+        max-width: 35%;
     }
 }
 
@@ -708,11 +709,11 @@ textarea::placeholder {
 }
 
 .confirm-msg {
-    color: var(--primary-color);
     background-color: #b6e2fa;
-    width: max-content;
-    padding: 3px;
-    margin: -30px 0 30px;
+    color: var(--primary-color);
+    line-height: 165%;
+    margin-top: -35px;
+    position: absolute;
 }
 
 .number {
@@ -794,4 +795,84 @@ textarea::placeholder {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.messages-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.messages-search-icon {
+    background: url('../imgs/search.svg') no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+    width: 25px;
+}
+
+.messages-unread,
+.messages-total {
+    font-weight: bold;
+    color: gray;
+}
+
+.messages-unread-nb,
+.messages-total-nb {
+    font-weight: bold;
+}
+
+.messages-unread-nb {
+    color: var(--secondary-color);
+}
+
+.messages-total-nb {
+    color: var(--primary-color);
+}
+
+.separation {
+    border-bottom: 2px solid lightgray;
+    margin: 10px 0;
+}
+
+.messages-block-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.messages-block-title {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.messages-block-title:hover {
+    color: #759de9
+}
+
+.messages-open-icon {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.messages-open-icon svg {
+    fill: var(--secondary-color);
+    width: 14px;
+    height: 18px;
+}
+
+.messages-open-icon svg:hover {
+    fill: #759de9
+}
+
+.messages-open-icon svg:active {
+    transform: scale(0.88);
+}
+
+.sec-color {
+    color: var(--secondary-color);
+}
+
+#select-order {
+    margin-right: 30px;
 }

@@ -1,5 +1,6 @@
 <?php
 
+include 'app/core/db.php';
 
 class Model
 {

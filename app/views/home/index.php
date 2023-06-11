@@ -20,16 +20,18 @@
                 </div>
             </div>
 
-            <p class="contact-text">Nous réparons tout type de smartphones,<br>
-                tablettes, ordinateurs et consoles de jeu.<br>
-                N'hésitez pas à demander votre devis !
-            </p>
-            <?php
-            if (isset($_SESSION['confirm'])) {
-                echo '<p class="confirm-msg">' . $_SESSION['confirm'] . '</p>';
-                unset($_SESSION['confirm']);
-            }
-            ?>
+            <div>
+                <p class="contact-text">Nous réparons tout type de smartphones,<br>
+                    tablettes, ordinateurs et consoles de jeu.<br>
+                    N'hésitez pas à demander votre devis !
+                </p>
+                <?php
+                if (isset($data['message'])) {
+                    echo '<p class="confirm-msg">' . $data['message'] . '</p>';
+                    unset($data['message']);
+                }
+                ?>
+            </div>
             <input type="button" class="btn-contact" value="Contactez-nous">
             <span class="contact-img"></span>
 

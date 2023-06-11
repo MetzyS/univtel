@@ -1,7 +1,5 @@
 <?php
 
-include 'app/core/db.php';
-
 class M_Connect extends Model
 {
     /**
