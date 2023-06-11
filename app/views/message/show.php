@@ -10,15 +10,8 @@ $component = new ComponentsMessage;
     <div class="separation"></div>
 
     <?php
-    $component->messageBlock('Messages récents', []);
-    $component->messageGrid($data['messages']);
-    ?>
-    <div class="separation"></div>
-
-
-    <div class="separation"></div>
-    <?php
     $component->allMessagesBlock('Tous les messages');
+    $component->messageGrid($data['messages']);
     ?>
     <div class="separation"></div>
 

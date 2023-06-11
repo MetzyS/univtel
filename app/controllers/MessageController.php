@@ -11,9 +11,13 @@ class Message extends M_Message
     public function index()
     {
         if (isset($_SESSION['user'])) {
+            $messageCount = $this->model->getCountMsg();
+            $messageCountUnread = $this->model->getCountMsgUnread();
             $messages = $this->model->getRecentMsg();
             $this->view('message/index', [
-                'messages' => $messages
+                'messageCount' => $messageCount,
+                'messageCountUnread' => $messageCountUnread,
+                'messages' => $messages,
             ]);
         }
     }
@@ -30,6 +34,20 @@ class Message extends M_Message
         } else {
             $_SESSION['error'] = 'not found';
             header('Location: /www/univtel/home/index/');
+        }
+    }
+
+    public function show()
+    {
+        if (isset($_SESSION['user'])) {
+            $messageCount = $this->model->getCountMsg();
+            $messageCountUnread = $this->model->getCountMsgUnread();
+            $messages = $this->model->getAllMsg();
+            $this->view('message/show', [
+                'messageCount' => $messageCount,
+                'messageCountUnread' => $messageCountUnread,
+                'messages' => $messages,
+            ]);
         }
     }
 }

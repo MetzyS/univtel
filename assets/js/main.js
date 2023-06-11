@@ -7,6 +7,9 @@ let body = document.querySelector('body');
 let btnContact = document.querySelector('.btn-contact');
 let btnContactHeader = document.querySelector('.btn-contact-tab');
 
+let msgOpenIcon = document.querySelector('.messages-open-icon');
+let msgGrid = document.querySelector('.messages-grid');
+
 
 /* Conditions d'affichage du caroussel */
 if (firstSlide) {
@@ -167,5 +170,12 @@ if (btnContact) {
 if (btnContactHeader) {
     btnContactHeader.addEventListener('click', e => {
         createModal();
+    })
+}
+
+if (msgOpenIcon) {
+    msgOpenIcon.addEventListener('click', e => {
+        msgOpenIcon.classList.toggle('icon-rotate');
+        msgGrid.classList.toggle('none');
     })
 }

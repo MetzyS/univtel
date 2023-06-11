@@ -75,11 +75,6 @@ nav {
     margin-top: 20px;
 }
 
-
-.none {
-    display: none;
-}
-
 .btn-burger {
     background: url('../imgs/burger.svg') no-repeat;
     background-position: center;
@@ -853,10 +848,12 @@ textarea::placeholder {
     grid-template-columns: 6fr repeat(2, 3fr) 1fr;
     grid-column: 1/5;
     padding: 10px 0px;
+    /* background-color: white; */
+    border-top: 1px solid lightgray;
 }
 
 .message-grid-row:hover {
-    background-color: rosybrown;
+    background-color: #c6e1ff59;
 }
 
 .message-empty {
@@ -899,6 +896,7 @@ textarea::placeholder {
     align-items: center;
     cursor: pointer;
     display: flex;
+    transform: rotate(90deg);
 }
 
 .messages-open-icon svg {
@@ -951,4 +949,12 @@ textarea::placeholder {
 
 .answered {
     background-color: gray;
+}
+
+.icon-rotate {
+    transform: unset;
+}
+
+.none {
+    display: none;
 }

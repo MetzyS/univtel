@@ -28,17 +28,25 @@ class ComponentsMessage
             </div>';
     }
 
+    /**
+     * Génère le code HTML pour le block "tous les messages"
+     * @param string $title = titre du block
+     */
     public function allMessagesBlock(string $title)
     {
         echo '
             <div class="messages-block">
                 <div class="messages-block-head">
-                    <h1 class="messages-block-title sec-color">' . $title . '</h1>
+                    <a href="/www/univtel/message/show" class="messages-block-title sec-color">' . $title . '</a>
                     <span class="messages-open-icon"></span>
                 </div>
             </div>';
     }
 
+    /**
+     * Affiche la liste des messages donnés en arguments
+     * @param array $messages 
+     */
     public function messageGrid(array $messages = null)
     {
         echo '
@@ -81,5 +89,18 @@ class ComponentsMessage
             echo '<p class="message-empty">Aucun message a afficher </p>';
         }
         echo '</div>';
+    }
+
+    /**
+     * Affiche la bar de navigation des messages
+     * @param int $messageCount = tableau nb messages et nb msg non lu
+     */
+    public function messageBar(int $messageCount = null, int $messageCountUnread = null)
+    {
+        echo '    <div class="messages-bar">
+        <span class="messages-search-icon"></span>
+        <span class="messages-unread">Non lu: <span class="messages-unread-nb">' . $messageCountUnread . '</span></span>
+        <span class="messages-total">Total: <span class="messages-total-nb">' . $messageCount . '</span></span>
+    </div>';
     }
 }
