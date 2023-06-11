@@ -38,4 +38,19 @@ class ComponentsMessage
                 </div>
             </div>';
     }
+
+    public function messageGrid(array $messages = null)
+    {
+        echo '
+            <div class="messages-grid">
+                <span class="message-top">Mail</span><span class="message-top">Sujet</span><span class="message-top">Date</span><span class="message-top">Etat</span>';
+        if (!empty($messages)) {
+            echo '<div class="message-grid-row">
+                    <span class="contact-infos-mail">teTZTZTZETZTZEst@mail.com</span><span class="contact-infos-subject">Devis</span><span class="contact-infos-date">11/01/01</span><span class="contact-info-state">X</span>
+                </div>';
+        } else {
+            echo '<p class="message-empty">Aucun message a afficher </p>';
+        }
+        echo '</div>';
+    }
 }

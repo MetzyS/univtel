@@ -14,7 +14,7 @@ class Connect extends M_Connect
         if (!isset($_SESSION['user'])) {
             $this->model->view('connect/index', []);
         } else {
-            $this->model->redirect('home/index');
+            $this->model->redirect('message/index');
         }
     }
 

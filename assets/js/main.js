@@ -9,24 +9,29 @@ let btnContactHeader = document.querySelector('.btn-contact-tab');
 
 
 /* Conditions d'affichage du caroussel */
-window.addEventListener('load', function () {
-    if (window.innerWidth > 650) {
-        removeHideSlide(firstSlide);
-        removeHideSlide(secondSlide);
-    } else {
-        addHideSlide(secondSlide);
-    }
-})
+if (firstSlide) {
+    window.addEventListener('load', function () {
+        if (window.innerWidth > 650) {
+            removeHideSlide(firstSlide);
+            removeHideSlide(secondSlide);
+        } else {
+            addHideSlide(secondSlide);
+        }
+    })
+}
 
-window.addEventListener('resize', (e) => {
-    const windowWidth = window.innerWidth;
-    if (windowWidth > 650) {
-        removeHideSlide(firstSlide);
-        removeHideSlide(secondSlide);
-    } else {
-        addHideSlide(secondSlide);
-    }
-})
+if (firstSlide) {
+    window.addEventListener('resize', (e) => {
+        const windowWidth = window.innerWidth;
+        if (windowWidth > 650) {
+            removeHideSlide(firstSlide);
+            removeHideSlide(secondSlide);
+        } else {
+            addHideSlide(secondSlide);
+        }
+    })
+}
+
 
 
 /* Afficher/Masquer les Slides */
@@ -42,15 +47,19 @@ function addHideSlide(HTMLElement) {
     HTMLElement.classList.add('none');
 }
 
-btnPrev.addEventListener('click', e => {
-    toggleHideSlide(firstSlide);
-    toggleHideSlide(secondSlide);
-})
+if (btnPrev) {
+    btnPrev.addEventListener('click', e => {
+        toggleHideSlide(firstSlide);
+        toggleHideSlide(secondSlide);
+    })
+}
 
-btnNext.addEventListener('click', e => {
-    toggleHideSlide(firstSlide);
-    toggleHideSlide(secondSlide);
-})
+if (btnNext) {
+    btnNext.addEventListener('click', e => {
+        toggleHideSlide(firstSlide);
+        toggleHideSlide(secondSlide);
+    })
+}
 
 
 /**
@@ -150,10 +159,13 @@ function createModal() {
 
 
 /* Event Listener boutons contact */
-btnContact.addEventListener('click', e => {
-    createModal();
-})
-
-btnContactHeader.addEventListener('click', e => {
-    createModal();
-})
+if (btnContact) {
+    btnContact.addEventListener('click', e => {
+        createModal();
+    })
+}
+if (btnContactHeader) {
+    btnContactHeader.addEventListener('click', e => {
+        createModal();
+    })
+}

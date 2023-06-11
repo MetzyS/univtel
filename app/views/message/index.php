@@ -13,17 +13,22 @@ $component = new ComponentsMessage;
 
     <?php
     $component->messageBlock('Messages récents', []);
+    $component->messageGrid();
     ?>
-
     <div class="separation"></div>
 
+
+    <div class="separation"></div>
     <?php
     $component->messageBlock('Messages triés', ['Devis', 'Infos', 'Autre', 'Non-lus']);
     ?>
-
     <div class="separation"></div>
 
+
+    <div class="separation"></div>
     <?php
     $component->allMessagesBlock('Tous les messages');
     ?>
+    <div class="separation"></div>
+
 </section>
