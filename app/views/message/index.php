@@ -13,7 +13,7 @@ $component = new ComponentsMessage;
 
     <?php
     $component->messageBlock('Messages récents', []);
-    $component->messageGrid();
+    $component->messageGrid($data['messages']);
     ?>
     <div class="separation"></div>
 

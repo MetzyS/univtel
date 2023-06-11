@@ -852,9 +852,15 @@ textarea::placeholder {
     display: grid;
     grid-template-columns: 6fr repeat(2, 3fr) 1fr;
     grid-column: 1/5;
+    padding: 10px 0px;
+}
+
+.message-grid-row:hover {
+    background-color: rosybrown;
 }
 
 .message-empty {
+    color: gray;
     font-weight: bold;
     margin: 15px 0;
 }
@@ -868,6 +874,10 @@ textarea::placeholder {
 
 .message-top:hover {
     color: var(--hover-color);
+}
+
+.message-center {
+    text-align: center;
 }
 
 .messages-block-head {
@@ -915,6 +925,30 @@ textarea::placeholder {
 
 /*Message Page - Individual messages*/
 .contact-infos {
+    display: flex;
+    align-self: center;
     font-size: 16px;
     word-break: break-all;
+}
+
+.unread,
+.read,
+.answered {
+    justify-self: center;
+    align-self: center;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+
+.unread {
+    background-color: var(--secondary-color);
+}
+
+.read {
+    background-color: green;
+}
+
+.answered {
+    background-color: gray;
 }

@@ -11,7 +11,7 @@ class Message extends M_Message
     public function index()
     {
         if (isset($_SESSION['user'])) {
-            $messages = $this->model->getMsg();
+            $messages = $this->model->getRecentMsg();
             $this->view('message/index', [
                 'messages' => $messages
             ]);

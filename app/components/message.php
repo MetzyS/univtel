@@ -43,11 +43,40 @@ class ComponentsMessage
     {
         echo '
             <div class="messages-grid">
-                <span class="message-top">Mail</span><span class="message-top">Sujet</span><span class="message-top">Date</span><span class="message-top">Etat</span>';
+                <span class="message-top">Mail</span><span class="message-top">Sujet</span><span class="message-top">Date</span><span class="message-top message-center">Etat</span>';
         if (!empty($messages)) {
-            echo '<div class="message-grid-row">
-                    <span class="contact-infos-mail">teTZTZTZETZTZEst@mail.com</span><span class="contact-infos-subject">Devis</span><span class="contact-infos-date">11/01/01</span><span class="contact-info-state">X</span>
-                </div>';
+            foreach ($messages as $id => $array) {
+                echo '<div class="message-grid-row" id="message-' . $array['id_message'] . '">';
+                foreach ($array as $key => $value) {
+                    if ($key == 'id_message') {
+                        continue;
+                    }
+                    if ($key == 'message') {
+                        continue;
+                    }
+                    if ($key == 'subject') {
+                        if ($value == '1') {
+                            $value = 'Devis';
+                        }
+                        if ($value == '2') {
+                            $value = 'Infos';
+                        }
+                        if ($value == '3') {
+                            $value = 'Autre';
+                        }
+                    }
+                    if ($key == 'sent_at') {
+                        $value = strtotime($value);
+                        $value = date("d-m-Y", $value);
+                    }
+                    if ($value == 'read' || $value == 'unread' || $value == 'answered') {
+                        echo '<span class="contact-infos ' . $value . '"></span>';
+                    } else {
+                        echo '<span class="contact-infos">' . $value . '</span>';
+                    }
+                }
+                echo '</div>';
+            }
         } else {
             echo '<p class="message-empty">Aucun message a afficher </p>';
         }
