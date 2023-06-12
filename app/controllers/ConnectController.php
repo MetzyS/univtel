@@ -43,4 +43,19 @@ class Connect extends M_Connect
             }
         };
     }
+
+    public function changepw()
+    {
+        if (isset($_SESSION['user'])) {
+            $this->model->view('connect/changepw');
+        }
+    }
+
+    public function change()
+    {
+        if (isset($_SESSION['user']) && isset($_SESSION['change'])) {
+            $change = $_SESSION['change'];
+            unset($_SESSION['change']);
+        }
+    }
 }

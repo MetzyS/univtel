@@ -14,6 +14,12 @@ $component = new ComponentsConnexion;
         </div>
         <?php
         if (isset($_SESSION['user'])) {
+            if ($_SERVER['REQUEST_URI'] == '/www/univtel/message/index') {
+                $component->changePswBtn();
+            }
+            if ($_SERVER['REQUEST_URI'] == '/www/univtel/connect/changepw') {
+                $component->messagePageBtn();
+            }
             $component->logoutBtn();
         } else {
             echo '<a href="/www/univtel/home/index/" class="logo"></a>';
