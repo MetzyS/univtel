@@ -78,7 +78,7 @@ class ComponentsMessage
                         $value = date("d-m-Y", $value);
                     }
                     if ($value == 'read' || $value == 'unread' || $value == 'answered') {
-                        echo '<span class="contact-infos ' . $value . '"></span>';
+                        echo '<button type="button" class="default-btn contact-infos ' . $value . '"></button>';
                     } else {
                         echo '<span class="contact-infos">' . $value . '</span>';
                     }

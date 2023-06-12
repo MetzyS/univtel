@@ -10,6 +10,8 @@ let btnContactHeader = document.querySelector('.btn-contact-tab');
 let msgOpenIcon = document.querySelector('.messages-open-icon');
 let msgGrid = document.querySelector('.messages-grid');
 
+let subMenuBtn = document.querySelectorAll('.default-btn');
+
 
 /* Conditions d'affichage du caroussel */
 if (firstSlide) {
@@ -160,6 +162,53 @@ function createModal() {
     })
 }
 
+function createSubMenu(id, HTMLElement) {
+    let subMenuContainer = document.createElement('div');
+    let subMenuList = document.createElement('ul');
+    let subMenuItemRead = document.createElement('li');
+    let subMenuItemUnread = document.createElement('li');
+    let subMenuItemOk = document.createElement('li');
+    let subMenuLinkRead = document.createElement('a');
+    let subMenuLinkUnread = document.createElement('a');
+    let subMenuLinkOk = document.createElement('a');
+    let subMenuSpanRead = document.createElement('span');
+    let subMenuSpanUnread = document.createElement('span');
+    let subMenuSpanOk = document.createElement('span');
+    let subMenuItemIconRead = document.createElement('span');
+    let subMenuItemIconUnread = document.createElement('span');
+    let subMenuItemIconOk = document.createElement('span');
+    subMenuLinkRead.id = 'read-' + id;
+    subMenuLinkRead.setAttribute('href', '#');
+    subMenuLinkUnread.id = 'unread-' + id;
+    subMenuLinkUnread.setAttribute('href', '#');
+    subMenuLinkOk.id = 'ok-' + id;
+    subMenuLinkOk.setAttribute('href', '#');
+    subMenuContainer.classList.add('submenu');
+    subMenuList.classList.add('submenu-list');
+    subMenuItemIconRead.classList.add('read');
+    subMenuItemIconUnread.classList.add('unread');
+    subMenuItemIconOk.classList.add('answered');
+    subMenuSpanRead.textContent = 'Lu';
+    subMenuSpanUnread.textContent = 'Non lu';
+    subMenuSpanOk.textContent = 'Traîté';
+
+
+    subMenuContainer.appendChild(subMenuList);
+
+    subMenuList.append(subMenuItemRead, subMenuItemUnread, subMenuItemOk);
+
+    subMenuItemRead.appendChild(subMenuLinkRead);
+    subMenuLinkRead.append(subMenuSpanRead, subMenuItemIconRead);
+
+    subMenuItemUnread.appendChild(subMenuLinkUnread);
+    subMenuLinkUnread.append(subMenuSpanUnread, subMenuItemIconUnread);
+
+    subMenuItemOk.appendChild(subMenuLinkOk);
+    subMenuLinkOk.append(subMenuSpanOk, subMenuItemIconOk);
+
+    HTMLElement.append(subMenuContainer);
+}
+
 
 /* Event Listener boutons contact */
 if (btnContact) {
@@ -178,4 +227,15 @@ if (msgOpenIcon) {
         msgOpenIcon.classList.toggle('icon-rotate');
         msgGrid.classList.toggle('none');
     })
+}
+
+if (subMenuBtn) {
+    subMenuBtn.forEach((element, index) => {
+        let btn = subMenuBtn[index];
+        messageId = btn.parentElement.id.replace(/\D/g, "");
+        btn.id = messageId;
+        btn.addEventListener('click', e => {
+            createSubMenu(btn.id, btn.parentElement);
+        })
+    });
 }

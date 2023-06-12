@@ -5,7 +5,7 @@
     --primary-color: #172339;
     --secondary-color: #C1272D;
     --title-s-mobile: 31px;
-    --hover-color: #759de9;
+    --hover-color: #c6e1ff59;
 }
 
 * {
@@ -879,12 +879,13 @@ textarea::placeholder {
     grid-template-columns: 6fr repeat(2, 3fr) 1fr;
     grid-column: 1/5;
     padding: 10px 0px;
+    position: relative;
     /* background-color: white; */
     border-top: 1px solid lightgray;
 }
 
 .message-grid-row:hover {
-    background-color: #c6e1ff59;
+    background-color: var(--hover-color);
 }
 
 .message-empty {
@@ -970,6 +971,19 @@ textarea::placeholder {
     height: 10px;
 }
 
+.default-btn {
+    border: none;
+    cursor: pointer;
+}
+
+.default-btn:hover {
+    opacity: 0.5;
+}
+
+.default-btn:active {
+    transform: scale(0.8);
+}
+
 .unread {
     background-color: var(--secondary-color);
 }
@@ -988,4 +1002,44 @@ textarea::placeholder {
 
 .none {
     display: none;
+}
+
+.submenu {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+}
+
+.submenu-list {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+}
+
+.submenu-list li {
+    border: 1px solid lightgray;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.submenu-list li:hover {
+    background-color: var(--hover-color);
+}
+
+.submenu-list li:active a span {
+    transform: scale(0.95);
+}
+
+.submenu-list li a {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.submenu-list li a span {
+    display: inline-flex;
 }
