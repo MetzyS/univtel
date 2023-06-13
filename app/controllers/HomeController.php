@@ -11,4 +11,9 @@ class Home extends M_Home
     {
         $this->model->view('home/index');
     }
+
+    public function confidentialite()
+    {
+        $this->model->view('home/confidentialite');
+    }
 }

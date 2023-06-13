@@ -1043,3 +1043,76 @@ textarea::placeholder {
 .submenu-list li a span {
     display: inline-flex;
 }
+
+
+
+
+
+
+/* Page confidentialite */
+.confidentialite {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.confidentialite h1,
+.confidentialite h2,
+.confidentialite h3,
+.confidentialite h4,
+.confidentialite h5 {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.confidentialite h1 {
+    font-size: var(--title-s-mobile);
+    margin-bottom: 30px;
+}
+
+.confidentialite h2 {
+    font-size: calc(var(--title-s-mobile)*0.8);
+}
+
+.confidentialite h3 {
+    font-size: calc(var(--title-s-mobile)*0.7);
+}
+
+.confidentialite h4 {
+    font-size: calc(var(--title-s-mobile)*0.6);
+}
+
+.confidentialite h5 {
+    font-size: calc(var(--title-s-mobile)*0.5);
+    margin-bottom: unset;
+}
+
+.confidentialite p {
+    margin-bottom: 10px;
+}
+
+.confidentialite a {
+    color: blue;
+    text-decoration: underline;
+}
+
+.confidentialite ul li {
+    margin: 0px 0px 3px 30px;
+    list-style: disc;
+}
+
+.confidentialite-contact p {
+    margin-bottom: unset;
+}
+
+.modal .confidentialite-text {
+    color: black;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+}
+
+.modal .policy-wrapper {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

@@ -89,6 +89,9 @@ function createModal() {
     let modalBtnWrapper = document.createElement('div');
     let modalBtnReset = document.createElement('input');
     let modalBtnSubmit = document.createElement('input');
+    let modalConfidentialiteWrapper = document.createElement('div');
+    let modalConfidentialiteLabel = document.createElement('label');
+    let modalConfidentialiteInput = document.createElement('input');
 
 
     /* Ajout des styles et attributs modal */
@@ -102,6 +105,7 @@ function createModal() {
     modalLabelEmail.classList.add('form-label')
     modalLabelSelect.classList.add('form-label')
     modalLabelTextArea.classList.add('form-label')
+    modalConfidentialiteWrapper.classList.add('policy-wrapper');
 
     modalBtnClose.setAttribute('type', 'button');
     modalBtnClose.textContent = 'X';
@@ -132,7 +136,7 @@ function createModal() {
     modalInputTextArea.setAttribute('name', 'message');
     modalInputTextArea.setAttribute('placeholder', 'Ecrivez votre message ici...');
     modalInputTextArea.setAttribute('cols', '10');
-    modalInputTextArea.setAttribute('rows', '8');
+    modalInputTextArea.setAttribute('rows', '3');
     modalInputTextArea.setAttribute('maxlength', '500');
     modalInputTextArea.id = 'message';
 
@@ -141,19 +145,28 @@ function createModal() {
     modalBtnSubmit.setAttribute('type', 'submit');
     modalBtnSubmit.setAttribute('value', 'Envoyer');
 
+    modalConfidentialiteInput.setAttribute('type', 'checkbox');
+    modalConfidentialiteInput.setAttribute('value', 'policy');
+    modalConfidentialiteInput.setAttribute('name', 'policy');
+    modalConfidentialiteInput.setAttribute('required', '');
+    modalConfidentialiteLabel.classList.add('confidentialite-text');
+    modalConfidentialiteLabel.textContent = "En soumettant ce formulaire, j'accepte que les informations saisies soient exploitées dans le cadre de la demande de devis et de la relation commerciale qui peut en découler.";
+
 
     /* Ajout 'for' label */
     // modalLabelName.htmlFor = 'name';
     modalLabelEmail.htmlFor = 'email';
     modalLabelSelect.htmlFor = 'subject';
     modalLabelTextArea.htmlFor = 'message';
+    modalConfidentialiteLabel.htmlFor = 'policy';
 
     /* Insertion des élements */
     body.prepend(modalContainer);
     modalContainer.appendChild(modal);
     modal.append(modalBtnClose, modalForm);
+    modalConfidentialiteWrapper.append(modalConfidentialiteInput, modalConfidentialiteLabel);
     // modalForm.append(modalTitle, modalLabelName, modalInputName, modalLabelEmail, modalInputEmail, modalLabelSelect, modalSelect, modalLabelTextArea, modalInputTextArea, modalBtnWrapper);
-    modalForm.append(modalTitle, modalLabelEmail, modalInputEmail, modalLabelSelect, modalSelect, modalLabelTextArea, modalInputTextArea, modalBtnWrapper);
+    modalForm.append(modalTitle, modalLabelEmail, modalInputEmail, modalLabelSelect, modalSelect, modalLabelTextArea, modalInputTextArea, modalConfidentialiteWrapper, modalBtnWrapper);
     modalSelect.append(modalFirstOption, modalSecondOption, modalThirdOpion);
     modalBtnWrapper.append(modalBtnReset, modalBtnSubmit);
 
