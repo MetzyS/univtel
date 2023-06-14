@@ -148,6 +148,7 @@ function createModal() {
     modalBtnSubmit.setAttribute('type', 'submit');
     modalBtnSubmit.id = 'submit';
     modalBtnSubmit.setAttribute('value', 'Envoyer');
+    modalBtnSubmit.setAttribute('disabled', '');
 
     modalConfidentialiteInput.setAttribute('type', 'checkbox');
     modalConfidentialiteInput.setAttribute('value', 'policy');
