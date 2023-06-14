@@ -34,7 +34,7 @@ class M_Message extends Model
     {
         try {
             $db = DB::getPdo();
-            $sql = $db->query('SELECT id_message, mail, subject, message, sent_at, status FROM message ORDER BY id_message DESC LIMIT 10');
+            $sql = $db->query('SELECT id_message, mail, subject, message, sent_at, status FROM message ORDER BY sent_at DESC LIMIT 10');
             $sql->execute();
             $data = $sql->fetchAll(PDO::FETCH_NAMED);
         } catch (Exception $e) {

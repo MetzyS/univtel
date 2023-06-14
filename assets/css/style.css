@@ -898,13 +898,13 @@ textarea::placeholder {
 }
 
 .message-grid-row {
+    border-top: 1px solid lightgray;
+    cursor: pointer;
     display: grid;
-    grid-template-columns: 6fr repeat(2, 3fr) 1fr;
     grid-column: 1/5;
+    grid-template-columns: 6fr repeat(2, 3fr) 1fr;
     padding: 10px 0px;
     position: relative;
-    /* background-color: white; */
-    border-top: 1px solid lightgray;
 }
 
 .message-grid-row:hover {

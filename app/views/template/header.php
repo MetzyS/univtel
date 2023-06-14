@@ -4,7 +4,6 @@ $component = new ComponentsConnexion;
 ?>
 <header>
     <nav class="margin">
-        <input type="button" class="btn-burger" value="burger">
         <div class="burger-menu none">
             <ul>
                 <li>Contact</li>
@@ -17,7 +16,7 @@ $component = new ComponentsConnexion;
             if ($_SERVER['REQUEST_URI'] == '/www/univtel/message/index') {
                 $component->changePswBtn();
             }
-            if ($_SERVER['REQUEST_URI'] == '/www/univtel/connect/changepw') {
+            if ($_SERVER['REQUEST_URI'] == '/www/univtel/connect/changepw' || $_SERVER['REQUEST_URI'] == '/www/univtel/message/show') {
                 $component->messagePageBtn();
             }
             $component->logoutBtn();
