@@ -266,7 +266,30 @@ if (subMenuBtn) {
         messageId = btn.parentElement.id.replace(/\D/g, "");
         btn.id = messageId;
         btn.addEventListener('click', e => {
+            let subMenu = document.querySelectorAll('.submenu');
+            if (subMenu) {
+                for (let x = 0; x < subMenu.length; x++) {
+                    subMenu[x].remove();
+                }
+            }
             createSubMenu(btn.id, btn.parentElement);
         })
     });
+    document.addEventListener('click', e => {
+        let isInArray = false;
+        for (let i = 0; i < subMenuBtn.length; i++) {
+            if (subMenuBtn[i] == e.target) {
+                isInArray = true;
+                break;
+            }
+        }
+        if (!isInArray) {
+            let subMenu = document.querySelectorAll('.submenu');
+            if (subMenu) {
+                for (let x = 0; x < subMenu.length; x++) {
+                    subMenu[x].remove();
+                }
+            }
+        }
+    })
 }
