@@ -210,11 +210,11 @@ function createSubMenu(id, HTMLElement) {
     let subMenuItemIconUnread = document.createElement('span');
     let subMenuItemIconOk = document.createElement('span');
     subMenuLinkRead.id = 'read-' + id;
-    subMenuLinkRead.setAttribute('href', '#');
+    subMenuLinkRead.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/read');
     subMenuLinkUnread.id = 'unread-' + id;
-    subMenuLinkUnread.setAttribute('href', '#');
+    subMenuLinkUnread.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/unread');
     subMenuLinkOk.id = 'ok-' + id;
-    subMenuLinkOk.setAttribute('href', '#');
+    subMenuLinkOk.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/answered');
     subMenuContainer.classList.add('submenu');
     subMenuList.classList.add('submenu-list');
     subMenuItemIconRead.classList.add('read');

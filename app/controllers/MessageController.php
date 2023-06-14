@@ -19,6 +19,9 @@ class Message extends M_Message
                 'messageCountUnread' => $messageCountUnread,
                 'messages' => $messages,
             ]);
+        } else {
+            $this->model->redirect('home/index');
+            exit;
         }
     }
 
@@ -32,8 +35,8 @@ class Message extends M_Message
                 'message' => $message
             ]);
         } else {
-            $_SESSION['error'] = 'not found';
-            header('Location: /www/univtel/home/index/');
+            $this->model->redirect('home/index');
+            exit;
         }
     }
 
@@ -48,6 +51,18 @@ class Message extends M_Message
                 'messageCountUnread' => $messageCountUnread,
                 'messages' => $messages,
             ]);
+        } else {
+            $this->model->redirect('home/index');
+        }
+    }
+
+    public function changeStatus($id, $status)
+    {
+        if (isset($_SESSION['user'])) {
+            $this->model->changeMessageStatus($id, $status);
+            $this->model->redirect('message/show');
+        } else {
+            $this->model->redirect('home/index');
         }
     }
 }

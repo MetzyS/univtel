@@ -52,7 +52,7 @@ class M_Message extends Model
     {
         try {
             $db = DB::getPdo();
-            $sql = $db->query('SELECT id_message, mail, subject, message, sent_at, status FROM message ORDER BY id_message DESC');
+            $sql = $db->query('SELECT id_message, mail, subject, message, sent_at, status FROM message ORDER BY sent_at DESC');
             $sql->execute();
             $data = $sql->fetchAll(PDO::FETCH_NAMED);
         } catch (Exception $e) {
@@ -91,6 +91,25 @@ class M_Message extends Model
             $sql = $db->query('SELECT COUNT(*) FROM message WHERE status = "unread"');
             $sql->execute();
             $data = $sql->fetch(PDO::FETCH_COLUMN);
+        } catch (Exception $e) {
+            $errorCode = $e->getCode();
+            $data = "Une erreur est survenue lors de la communication avec la base de données. Veuillez contacter l'administrateur du système pour obtenir de l'aide. Code d'erreur: " . $errorCode;
+        }
+        return $data;
+    }
+
+    /**
+     * Change le statut d'un message dans la BDD
+     */
+    public function changeMessageStatus($id, $status)
+    {
+        try {
+            $db = DB::getPdo();
+            $sql = $db->prepare('UPDATE message SET status = :status WHERE id_message = :id_message');
+            $sql->bindParam(':status', $status);
+            $sql->bindParam(':id_message', $id);
+            $sql->execute();
+            $data = 'OK';
         } catch (Exception $e) {
             $errorCode = $e->getCode();
             $data = "Une erreur est survenue lors de la communication avec la base de données. Veuillez contacter l'administrateur du système pour obtenir de l'aide. Code d'erreur: " . $errorCode;
