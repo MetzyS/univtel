@@ -662,8 +662,9 @@ nav {
     flex-wrap: wrap;
 }
 
+
 .modal input[type="text"],
-.modal input[type="email"],
+#email,
 .modal select {
     border: 1px solid gray;
     border-radius: 0;
@@ -673,6 +674,11 @@ nav {
     outline: none;
     padding: 7px;
 }
+
+.modal .input-error {
+    border: 1px solid red !important;
+}
+
 
 .close-modal {
     position: absolute;
@@ -710,6 +716,23 @@ nav {
     cursor: pointer;
     padding: 5px 20px;
     margin-top: 10px;
+}
+
+.modal-wrapper input[type="submit"]:hover,
+.modal-wrapper input[type="reset"]:hover {
+    color: #fff;
+    background-color: var(--secondary-color);
+}
+
+.modal-wrapper input[type="submit"]:active,
+.modal-wrapper input[type="reset"]:active {
+    transform: scale(0.95);
+}
+
+.modal-wrapper input[type="submit"]:disabled {
+    background-color: lightgray;
+    border: 1px solid transparent;
+    color: black;
 }
 
 input[type="text"]::placeholder,
@@ -1115,4 +1138,8 @@ textarea::placeholder {
 .modal .policy-wrapper {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.policy-wrapper input[type="checkbox"] {
+    margin-right: 5px;
 }

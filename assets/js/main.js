@@ -117,7 +117,9 @@ function createModal() {
     modalInputEmail.setAttribute('type', 'email');
     modalInputEmail.setAttribute('name', 'email');
     modalInputEmail.setAttribute('maxlength', '90');
+    modalInputEmail.setAttribute('required', '');
     modalInputEmail.setAttribute('placeholder', 'exemple@mail.com');
+    modalInputEmail.setAttribute('pattern', '^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
     modalInputEmail.id = 'email';
 
     modalLabelSelect.textContent = 'Sujet de la demande';
@@ -138,11 +140,13 @@ function createModal() {
     modalInputTextArea.setAttribute('cols', '10');
     modalInputTextArea.setAttribute('rows', '3');
     modalInputTextArea.setAttribute('maxlength', '500');
+    modalInputTextArea.setAttribute('required', '');
     modalInputTextArea.id = 'message';
 
     modalBtnReset.setAttribute('type', 'reset');
     modalBtnReset.setAttribute('value', 'Effacer');
     modalBtnSubmit.setAttribute('type', 'submit');
+    modalBtnSubmit.id = 'submit';
     modalBtnSubmit.setAttribute('value', 'Envoyer');
 
     modalConfidentialiteInput.setAttribute('type', 'checkbox');
@@ -150,7 +154,7 @@ function createModal() {
     modalConfidentialiteInput.setAttribute('name', 'policy');
     modalConfidentialiteInput.setAttribute('required', '');
     modalConfidentialiteLabel.classList.add('confidentialite-text');
-    modalConfidentialiteLabel.textContent = "En soumettant ce formulaire, j'accepte que les informations saisies soient exploitées dans le cadre de la demande de devis et de la relation commerciale qui peut en découler.";
+    modalConfidentialiteLabel.textContent = "En soumettant ce formulaire, j'accepte que les informations saisies soient exploitées dans le cadre de la demande de contact et de la relation commerciale qui peut en découler.";
 
 
     /* Ajout 'for' label */
@@ -173,6 +177,20 @@ function createModal() {
     modalBtnClose.addEventListener('click', e => {
         modalContainer.remove();
     })
+
+    modalInputEmail.addEventListener('input', e => {
+        let submitBtn = document.querySelector('#submit');
+        if (modalInputEmail.value.match(/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,5})$/)) {
+            modalInputEmail.classList.remove('input-error');
+            submitBtn.disabled = false;
+            console.log('ok');
+        } else {
+            modalInputEmail.classList.add('input-error');
+            submitBtn.disabled = true;
+            console.log('not ok');
+        }
+    })
+
 }
 
 function createSubMenu(id, HTMLElement) {
@@ -221,7 +239,6 @@ function createSubMenu(id, HTMLElement) {
 
     HTMLElement.append(subMenuContainer);
 }
-
 
 /* Event Listener boutons contact */
 if (btnContact) {
