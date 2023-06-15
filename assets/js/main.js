@@ -209,20 +209,26 @@ function createSubMenu(id, HTMLElement) {
     let subMenuItemIconRead = document.createElement('span');
     let subMenuItemIconUnread = document.createElement('span');
     let subMenuItemIconOk = document.createElement('span');
+    let subMenuItemDelete = document.createElement('span');
+
     subMenuLinkRead.id = 'read-' + id;
     subMenuLinkRead.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/read');
     subMenuLinkUnread.id = 'unread-' + id;
     subMenuLinkUnread.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/unread');
     subMenuLinkOk.id = 'ok-' + id;
     subMenuLinkOk.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/answered');
+    subMenuItemDelete.id = 'delete' + id;
+    subMenuItemDelete.setAttribute('href', '/www/univtel/message/deleteMessage/' + id);
     subMenuContainer.classList.add('submenu');
     subMenuList.classList.add('submenu-list');
     subMenuItemIconRead.classList.add('read');
     subMenuItemIconUnread.classList.add('unread');
     subMenuItemIconOk.classList.add('answered');
+    subMenuItemDelete.classList.add('delete');
     subMenuSpanRead.textContent = 'Lu';
     subMenuSpanUnread.textContent = 'Non lu';
     subMenuSpanOk.textContent = 'Traîté';
+    subMenuItemDelete.textContent = 'Supprimer';
 
 
     subMenuContainer.appendChild(subMenuList);

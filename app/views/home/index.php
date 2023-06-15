@@ -26,6 +26,10 @@
                     N'hésitez pas à demander votre devis !
                 </p>
                 <?php
+                if (isset($_SESSION['form_error'])) {
+                    echo '<p class="error-msg">' . $_SESSION['form_error'] . '</p>';
+                    unset($_SESSION['form_error']);
+                }
                 if (isset($data['message'])) {
                     echo '<p class="confirm-msg">' . $data['message'] . '</p>';
                     unset($data['message']);

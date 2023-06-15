@@ -270,7 +270,8 @@ nav {
     }
 
     .contact-text,
-    .confirm-msg {
+    .confirm-msg,
+    .error-msg {
         font-size: 16px;
         margin-top: 60px;
         max-width: 55%;
@@ -305,7 +306,8 @@ nav {
     }
 
     .contact-text,
-    .confirm-msg {
+    .confirm-msg,
+    .error-msg {
         font-size: 18px;
     }
 
@@ -363,7 +365,8 @@ nav {
         top: 200px;
     }
 
-    .confirm-msg {
+    .confirm-msg,
+    .error-msg {
         max-width: 35%;
     }
 }
@@ -761,8 +764,13 @@ textarea::placeholder {
     background-color: #b6e2fa;
     color: var(--primary-color);
     line-height: 165%;
-    margin-top: -35px;
-    position: absolute;
+    margin-bottom: 10px;
+}
+
+.error-msg {
+    color: var(--secondary-color);
+    background-color: #ffcccd;
+    line-height: 165%;
 }
 
 .number {
@@ -992,6 +1000,12 @@ textarea::placeholder {
     border-radius: 50%;
     width: 10px;
     height: 10px;
+}
+
+.delete {
+    background-color: var(--secondary-color);
+    color: #fff;
+    font-weight: bold;
 }
 
 .default-btn {
