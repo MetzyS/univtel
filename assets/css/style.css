@@ -829,6 +829,13 @@ textarea::placeholder {
     background-color: #ffc6c7;
 }
 
+.confirm-message {
+    color: blue;
+    text-align: center;
+    background-color: #c4e1ff;
+    margin: 0 auto;
+}
+
 @media screen and (min-width:650px) {
     .connexion-title {
         margin: 0 auto;
@@ -841,7 +848,8 @@ textarea::placeholder {
         width: 350px;
     }
 
-    .error-message {
+    .error-message,
+    .confirm-message {
         width: 350px;
         margin: 0 auto;
     }

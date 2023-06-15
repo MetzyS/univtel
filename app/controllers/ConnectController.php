@@ -84,7 +84,8 @@ class Connect extends M_Connect
             $change = $_SESSION['change'];
             unset($_SESSION['change']);
             $changePassword = $this->model->changePassword($change);
-            $this->model->redirect('home/index');
+            $_SESSION['confirm'] = $changePassword;
+            $this->model->redirect('connect/changepw');
         }
     }
 }
