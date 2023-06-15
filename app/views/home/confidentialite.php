@@ -55,8 +55,8 @@
         <p>65 Av. Georges Clemenceau</p>
         <p>34500</p>
         <p>Béziers</p>
-        <p>Site web: https://www.univtel.fr</p>
-        <p>Email: univtel@free.fr</p>
+        <p>Site web: https://www.site.fr</p>
+        <p>Email: mail@free.fr</p>
         <p>Numéro de téléphone: +33951535246</p>
     </div>
     <br>

@@ -13,7 +13,6 @@ if (!isset($_SESSION['user'])) {
 
         $_SESSION['change'] = array(
             'mail' => $mail,
-            'oldPassword' => $oldPassword,
             'password' => $password
         );
 
