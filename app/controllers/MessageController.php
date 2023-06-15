@@ -65,4 +65,14 @@ class Message extends M_Message
             $this->model->redirect('home/index');
         }
     }
+
+    public function deleteMessage($id)
+    {
+        if (isset($_SESSION['user'])) {
+            $this->model->deleteMessageById($id);
+            $this->model->redirect('message/show');
+        } else {
+            $this->model->redirect('home/index');
+        }
+    }
 }

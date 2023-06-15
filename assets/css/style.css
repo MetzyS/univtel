@@ -1003,7 +1003,6 @@ textarea::placeholder {
 }
 
 .delete {
-    background-color: var(--secondary-color);
     color: #fff;
     font-weight: bold;
 }
@@ -1054,7 +1053,7 @@ textarea::placeholder {
     width: max-content;
 }
 
-.submenu-list li {
+.submenu-item {
     border: 1px solid lightgray;
     display: flex;
     gap: 15px;
@@ -1062,25 +1061,54 @@ textarea::placeholder {
     padding: 5px;
 }
 
-.submenu-list li:hover {
+.submenu-delete {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.delete-btn {
+    border: none;
+    background-color: unset;
+}
+
+.submenu-delete:hover {
+    background-color: #fff;
+}
+
+.submenu-delete:hover [type="button"] span {
+    color: var(--secondary-color);
+}
+
+.submenu-item:hover {
     background-color: var(--hover-color);
 }
 
-.submenu-list li:active a span {
+.submenu-item:active a span {
     transform: scale(0.95);
 }
 
-.submenu-list li a {
+.submenu-item a {
     display: flex;
     gap: 20px;
     justify-content: space-between;
     width: 100%;
 }
 
-.submenu-list li a span {
+.submenu-delete a {
+    width: 100%;
+}
+
+.submenu-item a span {
     display: inline-flex;
 }
 
+.submenu-delete a span {
+    display: inline-flex;
+}
 
 
 
@@ -1160,4 +1188,60 @@ textarea::placeholder {
 
 .policy-wrapper input[type="checkbox"] {
     margin-right: 5px;
+}
+
+.delete-modal {
+    align-items: center;
+    background-color: var(--background);
+    border: 1px solid gray;
+    box-shadow: 2px 1px 5px gray;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    left: 50%;
+    padding: 5px;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    width: max-content;
+    z-index: 5;
+}
+
+.delete-modal-text {
+    margin: 5px 0;
+}
+
+.delete-btn-wrapper {
+    align-items: center;
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+}
+
+.btn-close-delete {
+    background-color: #fff;
+    border: 1px solid gray;
+    cursor: pointer;
+    padding: 3px;
+    text-align: center;
+    width: 50px;
+}
+
+.btn-confirm-delete {
+    background-color: var(--secondary-color);
+    color: white;
+    cursor: pointer;
+    padding: 3px;
+    text-align: center;
+    width: 50px;
+}
+
+
+.blur {
+    filter: blur(5px);
+}
+
+.focus {
+    filter: blur(unset);
 }

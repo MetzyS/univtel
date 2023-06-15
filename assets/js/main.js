@@ -195,45 +195,75 @@ function createModal() {
 }
 
 function createSubMenu(id, HTMLElement) {
+    // Création des élements
     let subMenuContainer = document.createElement('div');
     let subMenuList = document.createElement('ul');
     let subMenuItemRead = document.createElement('li');
     let subMenuItemUnread = document.createElement('li');
     let subMenuItemOk = document.createElement('li');
+    let subMenuItemDelete = document.createElement('li');
     let subMenuLinkRead = document.createElement('a');
     let subMenuLinkUnread = document.createElement('a');
     let subMenuLinkOk = document.createElement('a');
+    let subMenuBtnDelete = document.createElement('button');
+    // let subMenuLinkDelete = document.createElement('a');
     let subMenuSpanRead = document.createElement('span');
     let subMenuSpanUnread = document.createElement('span');
     let subMenuSpanOk = document.createElement('span');
     let subMenuItemIconRead = document.createElement('span');
     let subMenuItemIconUnread = document.createElement('span');
     let subMenuItemIconOk = document.createElement('span');
-    let subMenuItemDelete = document.createElement('span');
+    let subMenuSpanDelete = document.createElement('span');
+    let deleteModal = document.createElement('div');
+    let deleteModalMessage = document.createElement('p');
+    let deleteModalBtnWrapper = document.createElement('div');
+    let deleteModalLink = document.createElement('a');
+    let deleteModalClose = document.createElement('button');
 
-    subMenuLinkRead.id = 'read-' + id;
+
+    // Ajout des attributs et styles
     subMenuLinkRead.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/read');
-    subMenuLinkUnread.id = 'unread-' + id;
+    subMenuLinkRead.id = 'read-' + id;
     subMenuLinkUnread.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/unread');
-    subMenuLinkOk.id = 'ok-' + id;
+    subMenuLinkUnread.id = 'unread-' + id;
     subMenuLinkOk.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/answered');
-    subMenuItemDelete.id = 'delete' + id;
-    subMenuItemDelete.setAttribute('href', '/www/univtel/message/deleteMessage/' + id);
+    subMenuLinkOk.id = 'ok-' + id;
+    subMenuBtnDelete.setAttribute('type', 'button');
+    deleteModalLink.setAttribute('href', '/www/univtel/message/deleteMessage/' + id);
+    subMenuBtnDelete.id = 'delete-' + id;
+
+    subMenuItemRead.classList.add('submenu-item');
+    subMenuItemUnread.classList.add('submenu-item');
+    subMenuItemOk.classList.add('submenu-item');
     subMenuContainer.classList.add('submenu');
     subMenuList.classList.add('submenu-list');
     subMenuItemIconRead.classList.add('read');
     subMenuItemIconUnread.classList.add('unread');
     subMenuItemIconOk.classList.add('answered');
-    subMenuItemDelete.classList.add('delete');
+    subMenuBtnDelete.classList.add('delete-btn');
+    subMenuItemDelete.classList.add('submenu-delete');
+    subMenuSpanDelete.classList.add('delete');
+    deleteModal.classList.add('delete-modal');
+    deleteModal.classList.add('focus');
+    deleteModalMessage.classList.add('delete-modal-text');
+    deleteModalBtnWrapper.classList.add('delete-btn-wrapper');
+    deleteModalClose.classList.add('btn-close-delete');
+    deleteModalLink.classList.add('btn-confirm-delete');
+
+
     subMenuSpanRead.textContent = 'Lu';
     subMenuSpanUnread.textContent = 'Non lu';
     subMenuSpanOk.textContent = 'Traîté';
-    subMenuItemDelete.textContent = 'Supprimer';
+    subMenuSpanDelete.textContent = 'Supprimer';
+    deleteModalMessage.textContent = 'Voulez-vous vraiment supprimer ce message ?'
+    deleteModalLink.textContent = 'Oui';
+    deleteModalClose.textContent = 'Non';
 
 
+    // Positionnement dans le DOM
     subMenuContainer.appendChild(subMenuList);
 
-    subMenuList.append(subMenuItemRead, subMenuItemUnread, subMenuItemOk);
+    subMenuList.append(subMenuItemRead, subMenuItemUnread, subMenuItemOk, subMenuItemDelete);
 
     subMenuItemRead.appendChild(subMenuLinkRead);
     subMenuLinkRead.append(subMenuSpanRead, subMenuItemIconRead);
@@ -243,6 +273,30 @@ function createSubMenu(id, HTMLElement) {
 
     subMenuItemOk.appendChild(subMenuLinkOk);
     subMenuLinkOk.append(subMenuSpanOk, subMenuItemIconOk);
+
+    subMenuItemDelete.appendChild(subMenuBtnDelete);
+    subMenuBtnDelete.appendChild(subMenuSpanDelete);
+
+    deleteModal.append(deleteModalMessage, deleteModalBtnWrapper);
+    deleteModalBtnWrapper.append(deleteModalLink, deleteModalClose);
+
+    // EventListener confirmation suppression
+    subMenuItemDelete.addEventListener('click', e => {
+        let section = document.querySelector('section');
+        let header = document.querySelector('header');
+        let footer = document.querySelector('footer');
+        section.classList.add('blur');
+        header.classList.add('blur');
+        footer.classList.add('blur');
+        document.body.insertBefore(deleteModal, document.body.firstChild);
+
+        deleteModalClose.addEventListener('click', e => {
+            deleteModal.remove();
+            section.classList.remove('blur');
+            header.classList.remove('blur');
+            footer.classList.remove('blur');
+        })
+    })
 
     HTMLElement.append(subMenuContainer);
 }

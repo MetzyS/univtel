@@ -100,6 +100,9 @@ class M_Message extends Model
 
     /**
      * Change le statut d'un message dans la BDD
+     * @param int $id = message id
+     * @param string $status = nouveau statut
+     * @return string $data = msg si erreur avec la requête
      */
     public function changeMessageStatus($id, $status)
     {
@@ -110,6 +113,26 @@ class M_Message extends Model
             $sql->bindParam(':id_message', $id);
             $sql->execute();
             $data = 'OK';
+        } catch (Exception $e) {
+            $errorCode = $e->getCode();
+            $data = "Une erreur est survenue lors de la communication avec la base de données. Veuillez contacter l'administrateur du système pour obtenir de l'aide. Code d'erreur: " . $errorCode;
+        }
+        return $data;
+    }
+
+    /**
+     * Supprime un message de la base de données
+     * @param int $id = message id
+     * @return string $data = msg confirmation ou msg erreur
+     */
+    public function deleteMessageById($id)
+    {
+        try {
+            $db = DB::getPdo();
+            $sql = $db->prepare('DELETE FROM message WHERE id_message = :id_message');
+            $sql->bindParam(':id_message', $id);
+            $sql->execute();
+            $data = 'Le message à bien été supprimé.';
         } catch (Exception $e) {
             $errorCode = $e->getCode();
             $data = "Une erreur est survenue lors de la communication avec la base de données. Veuillez contacter l'administrateur du système pour obtenir de l'aide. Code d'erreur: " . $errorCode;
