@@ -2,9 +2,14 @@
 session_start();
 
 if ($_POST['message'] && $_POST['email'] && $_POST['subject'] && $_POST['policy'] == 'policy') {
+    if (strlen($_POST['message']) > 500) {
+        $_SESSION['form_error'] = 'Le message est trop long. 500 caractères maximum autorisé.';
+        header('Location: /www/univtel/');
+        exit();
+    }
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_ENCODED);
+    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_ENCODED);
 
     $_SESSION['contact'] = array(
         'email' => $email,

@@ -9,6 +9,8 @@ let btnContactHeader = document.querySelector('.btn-contact-tab');
 
 let msgOpenIcon = document.querySelector('.messages-open-icon');
 let msgGrid = document.querySelector('.messages-grid');
+let msgRow = document.querySelectorAll('.message-grid-row');
+let msgContactMail = document.querySelectorAll('.contact-mail');
 
 let subMenuBtn = document.querySelectorAll('.default-btn');
 
@@ -64,6 +66,35 @@ if (btnNext) {
         toggleHideSlide(firstSlide);
         toggleHideSlide(secondSlide);
     })
+}
+
+/**
+ * Requête AJAX pour récupérer infos message via ID
+ * @param {string} pathUrl 
+ * @param {string} method 
+ * @returns {json}
+ */
+function messageFetch(pathUrl, method = 'GET') {
+    return fetch(pathUrl, {
+        method: method,
+        headers: { 'Content-Type': 'application/json' },
+    })
+        .then(function (response) {
+            if (response.ok) {
+                return response.json();
+            }
+            return Promise.reject(response);
+        })
+
+        .then(function (data) {
+            // Faire ce que l'on veut du JSON
+            messageModal(data);
+            // console.log(data);
+        })
+
+        .catch(function (err) {
+            console.log(err);
+        })
 }
 
 
@@ -184,14 +215,11 @@ function createModal() {
         if (modalInputEmail.value.match(/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,5})$/)) {
             modalInputEmail.classList.remove('input-error');
             submitBtn.disabled = false;
-            console.log('ok');
         } else {
             modalInputEmail.classList.add('input-error');
             submitBtn.disabled = true;
-            console.log('not ok');
         }
     })
-
 }
 
 function createSubMenu(id, HTMLElement) {
@@ -301,6 +329,25 @@ function createSubMenu(id, HTMLElement) {
     HTMLElement.append(subMenuContainer);
 }
 
+
+function messageModal(msgJson) {
+    let modal = document.createElement('div');
+    let msgSender = document.createElement('p');
+    let msgDate = document.createElement('p');
+    let msgSubject = document.createElement('p');
+    let msgContent = document.createElement('p');
+
+    body.append(modal);
+
+    msgSender.textContent = JSON.stringify(msgJson['mail']);
+    msgDate.textContent = JSON.stringify(msgJson['sent_at']);
+    msgSubject.textContent = JSON.stringify(msgJson['subject']);
+    msgContent.textContent = decodeURIComponent(JSON.stringify(msgJson['message']));
+
+    modal.append(msgSender, msgDate, msgSubject, msgContent);
+}
+
+
 /* Event Listener boutons contact */
 if (btnContact) {
     btnContact.addEventListener('click', e => {
@@ -351,5 +398,15 @@ if (subMenuBtn) {
                 }
             }
         }
+    })
+}
+
+if (msgContactMail) {
+    msgContactMail.forEach(element => {
+        element.addEventListener('click', e => {
+            let msgId = element.parentElement.id.replace('message-', '');
+            let msgJson = messageFetch('http://localhost/www/univtel/app/views/message/processing/message.php?id=' + msgId);
+            // console.log(msgId);
+        })
     })
 }

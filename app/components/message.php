@@ -73,6 +73,11 @@ class ComponentsMessage
                             $value = 'Autre';
                         }
                     }
+
+                    if ($key == 'mail') {
+                        echo '<span class="contact-infos contact-mail">' . $value . '</span>';
+                        continue;
+                    }
                     if ($key == 'sent_at') {
                         $value = strtotime($value);
                         $value = date("d-m-Y", $value);
