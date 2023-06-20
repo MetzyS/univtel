@@ -2,7 +2,7 @@
 session_start();
 
 if ($_POST['message'] && $_POST['email'] && $_POST['subject'] && $_POST['policy'] == 'policy') {
-    if (strlen($_POST['message']) > 500) {
+    if (mb_strlen($_POST['message']) > 500) {
         $_SESSION['form_error'] = 'Le message est trop long. 500 caractères maximum autorisé.';
         header('Location: /www/univtel/');
         exit();
