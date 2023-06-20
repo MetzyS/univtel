@@ -62,7 +62,6 @@ class ComponentsMessage
                         case 'message':
                             continue 2;
                         case 'subject':
-                            // echo $value;
                             switch ($value) {
                                 case 1:
                                     $value = 'Devis';
@@ -74,20 +73,19 @@ class ComponentsMessage
                                     $value = 'Autre';
                                     break;
                             }
-                    }
-
-                    if ($key == 'mail') {
-                        echo '<span class="contact-infos contact-mail">' . $value . '</span>';
-                        continue;
-                    }
-                    if ($key == 'sent_at') {
-                        $value = strtotime($value);
-                        $value = date("d-m-Y", $value);
-                    }
-                    if ($value == 'read' || $value == 'unread' || $value == 'answered') {
-                        echo '<button type="button" class="default-btn contact-infos ' . $value . '"></button>';
-                    } else {
-                        echo '<span class="contact-infos">' . $value . '</span>';
+                            echo '<span class="contact-infos">' . $value . '</span>';
+                            continue 2;
+                        case 'mail':
+                            echo '<span class="contact-infos contact-mail">' . $value . '</span>';
+                            continue 2;
+                        case 'sent_at':
+                            $value = strtotime($value);
+                            $value = date("d-m-Y", $value);
+                            echo '<span class="contact-infos">' . $value . '</span>';
+                            continue 2;
+                        case 'status':
+                            echo '<button type="button" class="default-btn contact-infos ' . $value . '"></button>';
+                            continue 2;
                     }
                 }
                 echo '</div>';

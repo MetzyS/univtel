@@ -59,8 +59,12 @@ class Message extends M_Message
     public function changeStatus($id, $status)
     {
         if (isset($_SESSION['user'])) {
-            $this->model->changeMessageStatus($id, $status);
-            $this->model->redirect('message/show');
+            if ($status == 'unread' || $status == 'read' || $status == 'answered') {
+                $this->model->changeMessageStatus($id, $status);
+                $this->model->redirect('message/show');
+            } else {
+                $this->model->redirect('home/index');
+            }
         } else {
             $this->model->redirect('home/index');
         }

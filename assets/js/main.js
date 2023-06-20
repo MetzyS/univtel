@@ -348,7 +348,7 @@ function messageModal(msgJson) {
     let msgContent = document.createElement('p');
     let msgClose = document.createElement('button');
 
-    modal.classList.add('test');
+    modal.classList.add('msg-modal');
     modal.classList.add('margin');
 
     msgClose.textContent = 'X';
@@ -376,16 +376,18 @@ function messageModal(msgJson) {
 
     msgSenderTitle.classList.add('detail-title');
     msgSenderTitle.textContent = 'Email: ';
-    msgSenderMail.textContent = JSON.stringify(msgJson['mail']);
+    msgSenderMail.textContent = msgJson['mail'];
 
     msgDateTitle.classList.add('detail-title');
     msgDateTitle.textContent = 'Date: ';
-    msgDateTime.textContent = JSON.stringify(msgJson['sent_at']);
+    msgDateTime.textContent = msgJson['sent_at'];
 
     msgSubjectTitle.classList.add('detail-title');
     msgSubjectTitle.textContent = 'Sujet: ';
-    msgSubjectText.textContent = JSON.stringify(msgJson['subject']);
-    msgContent.textContent = decodeURIComponent(JSON.stringify(msgJson['message']));
+    msgSubjectText.textContent = msgJson['subject'];
+
+    msgContent.classList.add('detail-msg');
+    msgContent.textContent = decodeURIComponent(msgJson['message']);
 
     modal.append(msgClose, msgSender, msgDate, msgSubject, msgContent);
 }
