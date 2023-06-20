@@ -65,13 +65,13 @@ class ComponentsMessage
                             // echo $value;
                             switch ($value) {
                                 case 1:
-                                    echo 'Devis';
+                                    $value = 'Devis';
                                     break;
                                 case 2:
-                                    echo 'Infos';
+                                    $value = 'Infos';
                                     break;
                                 case 3:
-                                    echo 'Autre';
+                                    $value = 'Autre';
                                     break;
                             }
                     }
