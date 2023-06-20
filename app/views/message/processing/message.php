@@ -21,6 +21,16 @@ if (isset($_SESSION['user']) && isset($_GET['id'])) {
     $result['sent_at'][0] = implode('/', array_reverse(explode('-', $result['sent_at'][0])));
     $result['sent_at'] = implode(' ', $result['sent_at']);
 
+    // traitement du sujet de la prise de contact
+    switch ($result['subject']) {
+        case 1:
+            $result['subject'] = 'Demande de devis';
+        case 2:
+            $result['subject'] = "Demande d'informations";
+        case 3:
+            $result['subject'] = 'Autre (précisé dans le message)';
+    }
+
 
     // Affiche la réponse sous le format JSON (pour AJAX)
     echo json_encode($result);

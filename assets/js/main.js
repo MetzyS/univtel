@@ -332,23 +332,66 @@ function createSubMenu(id, HTMLElement) {
 
 function messageModal(msgJson) {
     let modal = document.createElement('div');
-    let msgSender = document.createElement('p');
-    let msgDate = document.createElement('p');
-    let msgSubject = document.createElement('p');
+
+    let msgSender = document.createElement('div');
+    let msgSenderTitle = document.createElement('span');
+    let msgSenderMail = document.createElement('span');
+
+    let msgDate = document.createElement('div');
+    let msgDateTitle = document.createElement('span');
+    let msgDateTime = document.createElement('span');
+
+    let msgSubject = document.createElement('div');
+    let msgSubjectTitle = document.createElement('span');
+    let msgSubjectText = document.createElement('span');
+
     let msgContent = document.createElement('p');
+    let msgClose = document.createElement('button');
 
-    body.append(modal);
+    modal.classList.add('test');
+    modal.classList.add('margin');
 
-    msgSender.textContent = JSON.stringify(msgJson['mail']);
-    msgDate.textContent = JSON.stringify(msgJson['sent_at']);
-    msgSubject.textContent = JSON.stringify(msgJson['subject']);
+    msgClose.textContent = 'X';
+    msgClose.classList.add('close-msg');
+
+    msgClose.addEventListener('click', e => {
+        msgClose.parentNode.remove();
+        sectionMessage.classList.toggle('none')
+    })
+
+    // body.append(modal);
+    let footer = document.querySelector('footer');
+    let sectionMessage = document.querySelector('.messages');
+    sectionMessage.classList.toggle('none');
+    body.insertBefore(modal, footer);
+
+    msgSender.classList.add('detail-grid');
+    msgSender.append(msgSenderTitle, msgSenderMail);
+
+    msgDate.classList.add('detail-grid');
+    msgDate.append(msgDateTitle, msgDateTime);
+
+    msgSubject.classList.add('detail-grid');
+    msgSubject.append(msgSubjectTitle, msgSubjectText);
+
+    msgSenderTitle.classList.add('detail-title');
+    msgSenderTitle.textContent = 'Email: ';
+    msgSenderMail.textContent = JSON.stringify(msgJson['mail']);
+
+    msgDateTitle.classList.add('detail-title');
+    msgDateTitle.textContent = 'Date: ';
+    msgDateTime.textContent = JSON.stringify(msgJson['sent_at']);
+
+    msgSubjectTitle.classList.add('detail-title');
+    msgSubjectTitle.textContent = 'Sujet: ';
+    msgSubjectText.textContent = JSON.stringify(msgJson['subject']);
     msgContent.textContent = decodeURIComponent(JSON.stringify(msgJson['message']));
 
-    modal.append(msgSender, msgDate, msgSubject, msgContent);
+    modal.append(msgClose, msgSender, msgDate, msgSubject, msgContent);
 }
 
 
-/* Event Listener boutons contact */
+/* Event Listener => boutons contact (page d'accueil) */
 if (btnContact) {
     btnContact.addEventListener('click', e => {
         createModal();
@@ -360,6 +403,7 @@ if (btnContactHeader) {
     })
 }
 
+/* Event Listener => dérouler la liste des messages (page messages) */
 if (msgOpenIcon) {
     msgOpenIcon.addEventListener('click', e => {
         msgOpenIcon.classList.toggle('icon-rotate');
@@ -367,6 +411,7 @@ if (msgOpenIcon) {
     })
 }
 
+/* Event Listener => menu message (lu, non lu, supprimer..) */
 if (subMenuBtn) {
     subMenuBtn.forEach((element, index) => {
         let btn = subMenuBtn[index];
@@ -405,8 +450,7 @@ if (msgContactMail) {
     msgContactMail.forEach(element => {
         element.addEventListener('click', e => {
             let msgId = element.parentElement.id.replace('message-', '');
-            let msgJson = messageFetch('http://localhost/www/univtel/app/views/message/processing/message.php?id=' + msgId);
-            // console.log(msgId);
+            messageFetch('http://localhost/www/univtel/app/views/message/processing/message.php?id=' + msgId);
         })
     })
 }
