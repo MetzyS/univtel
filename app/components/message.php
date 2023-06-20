@@ -62,13 +62,17 @@ class ComponentsMessage
                         case 'message':
                             continue 2;
                         case 'subject':
+                            // echo $value;
                             switch ($value) {
-                                case '1':
-                                    $value = 'Devis';
-                                case '2':
-                                    $value = 'Infos';
-                                case '3':
-                                    $value = 'Autre';
+                                case 1:
+                                    echo 'Devis';
+                                    break;
+                                case 2:
+                                    echo 'Infos';
+                                    break;
+                                case 3:
+                                    echo 'Autre';
+                                    break;
                             }
                     }
 
