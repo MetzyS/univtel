@@ -56,22 +56,20 @@ class ComponentsMessage
             foreach ($messages as $id => $array) {
                 echo '<div class="message-grid-row" id="message-' . $array['id_message'] . '">';
                 foreach ($array as $key => $value) {
-                    if ($key == 'id_message') {
-                        continue;
-                    }
-                    if ($key == 'message') {
-                        continue;
-                    }
-                    if ($key == 'subject') {
-                        if ($value == '1') {
-                            $value = 'Devis';
-                        }
-                        if ($value == '2') {
-                            $value = 'Infos';
-                        }
-                        if ($value == '3') {
-                            $value = 'Autre';
-                        }
+                    switch ($key) {
+                        case 'id_message':
+                            continue 2;
+                        case 'message':
+                            continue 2;
+                        case 'subject':
+                            switch ($value) {
+                                case '1':
+                                    $value = 'Devis';
+                                case '2':
+                                    $value = 'Infos';
+                                case '3':
+                                    $value = 'Autre';
+                            }
                     }
 
                     if ($key == 'mail') {
