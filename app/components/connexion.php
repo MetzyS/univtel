@@ -28,12 +28,12 @@ class ComponentsConnexion
 
     public function messagePageBtn()
     {
-        echo '<a href="/www/univtel/message/index" class="link-profile">Retour</a>';
+        echo '<a href="/www/univtel/public/message/index" class="link-profile">Retour</a>';
     }
 
     public function changePswBtn()
     {
-        echo '<a href="/www/univtel/connect/changepw" class="link-profile">Profil</a>';
+        echo '<a href="/www/univtel/public/connect/changepw" class="link-profile">Profil</a>';
     }
 
     public function changePswForm()

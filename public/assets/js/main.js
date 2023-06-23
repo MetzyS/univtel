@@ -250,14 +250,14 @@ function createSubMenu(id, HTMLElement) {
 
 
     // Ajout des attributs et styles
-    subMenuLinkRead.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/read');
+    subMenuLinkRead.setAttribute('href', '/www/univtel/public/message/changeStatus/' + id + '/read');
     subMenuLinkRead.id = 'read-' + id;
-    subMenuLinkUnread.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/unread');
+    subMenuLinkUnread.setAttribute('href', '/www/univtel/public/message/changeStatus/' + id + '/unread');
     subMenuLinkUnread.id = 'unread-' + id;
-    subMenuLinkOk.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/answered');
+    subMenuLinkOk.setAttribute('href', '/www/univtel/public/message/changeStatus/' + id + '/answered');
     subMenuLinkOk.id = 'ok-' + id;
     subMenuBtnDelete.setAttribute('type', 'button');
-    deleteModalLink.setAttribute('href', '/www/univtel/message/deleteMessage/' + id);
+    deleteModalLink.setAttribute('href', '/www/univtel/public/message/deleteMessage/' + id);
     subMenuBtnDelete.id = 'delete-' + id;
 
     subMenuItemRead.classList.add('submenu-item');

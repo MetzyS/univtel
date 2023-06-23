@@ -3,7 +3,7 @@
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header('Location: /www/univtel/');
+    header('Location: /www/univtel/public/');
     exit();
 } else {
     if ($_POST['mail'] && $_POST['password']) {
@@ -16,10 +16,10 @@ if (!isset($_SESSION['user'])) {
             'password' => $password
         );
 
-        header('Location: /www/univtel/connect/change/');
+        header('Location: /www/univtel/public/connect/change/');
         exit();
     } else {
-        header('Location: /www/univtel/');
+        header('Location: /www/univtel/public/');
         exit();
     }
 }

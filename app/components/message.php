@@ -37,7 +37,7 @@ class ComponentsMessage
         echo '
             <div class="messages-block">
                 <div class="messages-block-head">
-                    <a href="/www/univtel/message/show" class="messages-block-title sec-color">' . $title . '</a>
+                    <a href="/www/univtel/public/message/show" class="messages-block-title sec-color">' . $title . '</a>
                     <span class="messages-open-icon"></span>
                 </div>
             </div>';

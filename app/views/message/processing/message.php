@@ -36,5 +36,5 @@ if (isset($_SESSION['user']) && isset($_GET['id'])) {
     echo json_encode($result);
     exit;
 } else {
-    header('Location: /www/univtel/home/index');
+    header('Location: /www/univtel/public/home/index');
 }

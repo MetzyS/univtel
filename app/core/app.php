@@ -15,11 +15,11 @@ class App
             $url[0] = 'Home';
         }
 
-        if (file_exists('app/controllers/' . ucfirst($url[0]) . 'Controller.php')) {
+        if (file_exists('../app/controllers/' . ucfirst($url[0]) . 'Controller.php')) {
             $this->controller = ucfirst($url[0]);
             unset($url[0]);
         }
-        require('app/controllers/' . $this->controller . 'Controller.php');
+        require('../app/controllers/' . $this->controller . 'Controller.php');
         $this->controller = new $this->controller;
 
         if (isset($url[1])) {
@@ -31,7 +31,7 @@ class App
         $this->params = $url ? array_values($url) : [];
 
         call_user_func_array([$this->controller, $this->method], $this->params);
-        include_once 'app/views/template/footer.php';
+        include_once '../app/views/template/footer.php';
     }
 
     public function parseUrl()

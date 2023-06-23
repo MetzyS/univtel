@@ -5,9 +5,9 @@ error_reporting(E_ALL);
 
 session_start();
 
-include_once 'app/includes.php';
+include_once '../app/includes.php';
 
-require_once 'app/init.php';
+require_once '../app/init.php';
 $app = new App;
 
 // echo '<pre>';
