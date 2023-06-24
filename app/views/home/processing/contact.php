@@ -4,7 +4,7 @@ session_start();
 if ($_POST['message'] && $_POST['email'] && $_POST['subject'] && $_POST['policy'] == 'policy') {
     if (mb_strlen($_POST['message']) > 500) {
         $_SESSION['form_error'] = 'Le message est trop long. 500 caractères maximum autorisé.';
-        header('Location: /www/univtel/public/');
+        header('Location: /www/univtel/');
         exit();
     }
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
@@ -16,9 +16,9 @@ if ($_POST['message'] && $_POST['email'] && $_POST['subject'] && $_POST['policy'
         'subject' => $subject,
         'message' => $message
     );
-    header('Location: /www/univtel/public/message/send/');
+    header('Location: /www/univtel/message/send/');
     exit();
 } else {
     $_SESSION['form_error'] = 'Votre demande de contact n&#39;a pas abouti. <br>Veuillez recommencer et veiller à bien remplir tous les champs.';
-    header('Location: /www/univtel/public/');
+    header('Location: /www/univtel/');
 }

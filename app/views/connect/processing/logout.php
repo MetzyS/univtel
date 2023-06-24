@@ -2,5 +2,5 @@
 session_start();
 session_destroy();
 
-header('Location: /www/univtel/public/');
+header('Location: /www/univtel');
 exit();
