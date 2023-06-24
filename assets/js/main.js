@@ -453,6 +453,13 @@ if (msgContactMail) {
         element.addEventListener('click', e => {
             let msgId = element.parentElement.id.replace('message-', '');
             messageFetch('http://localhost/www/univtel/app/views/message/processing/message.php?id=' + msgId);
+
+            // Changement statut 'non-lu' => 'lu'
+            btnRead = document.getElementById(msgId);
+            if (btnRead.classList.contains('unread')) {
+                btnRead.classList.remove('unread');
+                btnRead.classList.add('read');
+            }
         })
     })
 }
