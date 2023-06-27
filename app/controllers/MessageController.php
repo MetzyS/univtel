@@ -1,12 +1,6 @@
 <?php
 
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
-require '../vendor/autoload.php';
-
 
 class Message extends M_Message
 {
@@ -92,36 +86,6 @@ class Message extends M_Message
     public function response()
     {
         if (isset($_SESSION['user']) && $_SESSION['response']) {
-            $mail = new PHPMailer(true);
-            $responseMail = $_SESSION['response']['mail'];
-            try {
-                //Config serveur
-                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-                $mail->isSMTP();
-                $mail->Host       = 'smtp.host.com';
-                $mail->SMTPAuth   = true;
-                $mail->Username   = 'yourmail@domain.com';
-                $mail->Password   = 'yourpassword';
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port       = 587;
-
-                //Config mail
-                $mail->setFrom('yourmail@domain.com', "L'Univers du Téléphone");
-                $mail->addAddress($responseMail);
-                $mail->addBCC('bcc@domain.com');
-
-                //Contenu
-                $mail->isHTML(true);
-                $mail->Subject = 'Univers du Téléphone - Réponse a votre prise de contact';
-                $mail->Body    = $_SESSION['response']['text'];
-
-                $mail->CharSet = 'UTF-8';
-                $mail->Encoding = 'base64';
-
-                $mail->send();
-            } catch (Exception $e) {
-                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-            }
             $this->model->redirect('message/home');
         } else {
             $this->model->redirect('home/index');

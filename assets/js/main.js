@@ -330,6 +330,10 @@ function createSubMenu(id, HTMLElement) {
 }
 
 
+/**
+ * Crée la modale d'affichage du mail
+ * @param {JSON} msgJson 
+ */
 function messageModal(msgJson) {
     let modal = document.createElement('div');
 
@@ -347,6 +351,9 @@ function messageModal(msgJson) {
 
     let msgContent = document.createElement('p');
     let msgClose = document.createElement('button');
+
+    let msgReplyContainer = document.createElement('div');
+    let msgReplyBtn = document.createElement('button')
 
     modal.classList.add('msg-modal');
     modal.classList.add('margin');
@@ -374,6 +381,10 @@ function messageModal(msgJson) {
     msgSubject.classList.add('detail-grid');
     msgSubject.append(msgSubjectTitle, msgSubjectText);
 
+    msgReplyContainer.classList.add('reply-container');
+    msgReplyBtn.classList.add('reply-btn');
+    msgReplyContainer.appendChild(msgReplyBtn);
+
     msgSenderTitle.classList.add('detail-title');
     msgSenderTitle.textContent = 'Email: ';
     msgSenderMail.textContent = msgJson['mail'];
@@ -389,7 +400,7 @@ function messageModal(msgJson) {
     msgContent.classList.add('detail-msg');
     msgContent.textContent = decodeURIComponent(msgJson['message']);
 
-    modal.append(msgClose, msgSender, msgDate, msgSubject, msgContent);
+    modal.append(msgClose, msgSender, msgDate, msgSubject, msgContent, msgReplyContainer);
 }
 
 
