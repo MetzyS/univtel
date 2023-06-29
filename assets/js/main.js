@@ -312,7 +312,7 @@ function messageTemplate(msgJson) {
             <span>${msgJson['sent_at']}</span>
         </div>
         <div class="detail-grid">
-            <span>Sujet :</span>
+            <span class="detail-title">Sujet :</span>
             <span>${msgJson['subject']}</span>
         </div>
         <p class="detail-msg">${decodeURIComponent(msgJson['message'])}</p>
@@ -412,3 +412,5 @@ if (msgContactMail) {
         })
     })
 }
+
+// changer également 'non-lu' dans la page message lors d'un clic message
