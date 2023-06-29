@@ -87,8 +87,7 @@ function messageFetch(pathUrl, method = 'GET') {
         })
 
         .then(function (data) {
-            // Faire ce que l'on veut du JSON
-            messageModal(data);
+            messageTemplate(data);
             // console.log(data);
         })
 
@@ -331,76 +330,47 @@ function createSubMenu(id, HTMLElement) {
 
 
 /**
- * Crée la modale d'affichage du mail
+ * 
  * @param {JSON} msgJson 
  */
-function messageModal(msgJson) {
+function messageTemplate(msgJson) {
+    const html = `
+        <button class="close-msg">X</button>
+        <div class="detail-grid">
+            <span class="detail-title">Email :</span>
+            <span>${msgJson['mail']}</span>
+        </div>
+        <div class="detail-grid">
+            <span class="detail-title">Date :</span>
+            <span>${msgJson['sent_at']}</span>
+        </div>
+        <div class="detail-grid">
+            <span>Sujet :</span>
+            <span>${msgJson['subject']}</span>
+        </div>
+        <p class="detail-msg">${decodeURIComponent(msgJson['message'])}</p>
+        <div class="reply-container">
+            <button class="reply-btn">Répondre</button>
+        </div>
+    `;
     let modal = document.createElement('div');
-
-    let msgSender = document.createElement('div');
-    let msgSenderTitle = document.createElement('span');
-    let msgSenderMail = document.createElement('span');
-
-    let msgDate = document.createElement('div');
-    let msgDateTitle = document.createElement('span');
-    let msgDateTime = document.createElement('span');
-
-    let msgSubject = document.createElement('div');
-    let msgSubjectTitle = document.createElement('span');
-    let msgSubjectText = document.createElement('span');
-
-    let msgContent = document.createElement('p');
-    let msgClose = document.createElement('button');
-
-    let msgReplyContainer = document.createElement('div');
-    let msgReplyBtn = document.createElement('button')
-
     modal.classList.add('msg-modal');
     modal.classList.add('margin');
 
-    msgClose.textContent = 'X';
-    msgClose.classList.add('close-msg');
-
-    msgClose.addEventListener('click', e => {
-        msgClose.parentNode.remove();
-        sectionMessage.classList.toggle('none')
-    })
-
-    // body.append(modal);
+    
+    
+    modal.innerHTML = html;
     let footer = document.querySelector('footer');
     let sectionMessage = document.querySelector('.messages');
     sectionMessage.classList.toggle('none');
     body.insertBefore(modal, footer);
 
-    msgSender.classList.add('detail-grid');
-    msgSender.append(msgSenderTitle, msgSenderMail);
 
-    msgDate.classList.add('detail-grid');
-    msgDate.append(msgDateTitle, msgDateTime);
-
-    msgSubject.classList.add('detail-grid');
-    msgSubject.append(msgSubjectTitle, msgSubjectText);
-
-    msgReplyContainer.classList.add('reply-container');
-    msgReplyBtn.classList.add('reply-btn');
-    msgReplyContainer.appendChild(msgReplyBtn);
-
-    msgSenderTitle.classList.add('detail-title');
-    msgSenderTitle.textContent = 'Email: ';
-    msgSenderMail.textContent = msgJson['mail'];
-
-    msgDateTitle.classList.add('detail-title');
-    msgDateTitle.textContent = 'Date: ';
-    msgDateTime.textContent = msgJson['sent_at'];
-
-    msgSubjectTitle.classList.add('detail-title');
-    msgSubjectTitle.textContent = 'Sujet: ';
-    msgSubjectText.textContent = msgJson['subject'];
-
-    msgContent.classList.add('detail-msg');
-    msgContent.textContent = decodeURIComponent(msgJson['message']);
-
-    modal.append(msgClose, msgSender, msgDate, msgSubject, msgContent, msgReplyContainer);
+    let msgClose = document.querySelector('.close-msg')
+    msgClose.addEventListener('click', e => {
+        msgClose.parentNode.remove();
+        sectionMessage.classList.toggle('none')
+    })
 }
 
 
