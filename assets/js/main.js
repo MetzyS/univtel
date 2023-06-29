@@ -221,6 +221,11 @@ function createModal() {
     })
 }
 
+/**
+ * Template submenu status messages (lu, non lu, traîté, supprimer)
+ * @param {int} id 
+ * @param {HTMLElement} HTMLElement 
+ */
 function subMenuTemplate(id, HTMLElement) {
     const html = `
     <ul class="submenu-list">
@@ -292,7 +297,7 @@ function subMenuTemplate(id, HTMLElement) {
 
 
 /**
- * 
+ * Template affichage message
  * @param {JSON} msgJson 
  */
 function messageTemplate(msgJson) {
