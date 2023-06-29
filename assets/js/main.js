@@ -88,7 +88,6 @@ function messageFetch(pathUrl, method = 'GET') {
 
         .then(function (data) {
             messageTemplate(data);
-            // console.log(data);
         })
 
         .catch(function (err) {
@@ -96,119 +95,49 @@ function messageFetch(pathUrl, method = 'GET') {
         })
 }
 
-
 /**
- * Crée les élements HTML pour le formulaire de contact et les insère dans le DOM
+ * Crée la modale de prise de contact
  */
 function createModal() {
-    /* Création du formulaire de contact */
     let modalContainer = document.createElement('div');
-    let modal = document.createElement('div');
-    let modalBtnClose = document.createElement('button');
-    let modalForm = document.createElement('form');
-    let modalTitle = document.createElement('p');
-    let modalLabelEmail = document.createElement('label');
-    let modalInputEmail = document.createElement('input');
-    let modalLabelSelect = document.createElement('label');
-    let modalSelect = document.createElement('select');
-    let modalFirstOption = document.createElement('option');
-    let modalSecondOption = document.createElement('option');
-    let modalThirdOpion = document.createElement('option');
-    let modalLabelTextArea = document.createElement('label');
-    let modalInputTextArea = document.createElement('textarea');
-    let modalBtnWrapper = document.createElement('div');
-    let modalBtnReset = document.createElement('input');
-    let modalBtnSubmit = document.createElement('input');
-    let modalConfidentialiteWrapper = document.createElement('div');
-    let modalConfidentialiteLabel = document.createElement('label');
-    let modalConfidentialiteInput = document.createElement('input');
-
-
-    /* Ajout des styles et attributs modal */
     modalContainer.classList.add('modal-container');
-    modal.classList.add('modal');
-    modalBtnClose.classList.add('close-modal');
-    modalForm.classList.add('form');
-    modalBtnWrapper.classList.add('modal-wrapper')
-    modalTitle.textContent = 'Formulaire de contact';
-    // modalLabelName.classList.add('form-label')
-    modalLabelEmail.classList.add('form-label')
-    modalLabelSelect.classList.add('form-label')
-    modalLabelTextArea.classList.add('form-label')
-    modalConfidentialiteWrapper.classList.add('policy-wrapper');
 
-    modalBtnClose.setAttribute('type', 'button');
-    modalBtnClose.textContent = 'X';
+    var html = `
+        <div class="modal">
+            <button class="close-modal" type="button">X</button>
+            <form class="form" method="POST" action="/www/univtel/app/views/home/processing/contact.php">
+                <p>Formulaire de contact</p>
+                <label class="form-label" for="email">Votre adresse email</label>
+                <input type="email" name="email" class="input-mail" maxlength="90" required="" placeholder="exemple@mail.com" pattern="^[w-.]+@([w-]+.)+[w-]{2,4}$" id="email">
+                <label class="form-label" for="subject">Sujet de la demande</label>
+                <select name="subject" id="subject">
+                    <option value="1">Demande de devis</option>
+                    <option value="2">Demande d'informations</option>
+                    <option value="3">Autre, précisez dans le message</option>
+                </select>
+                <label class="form-label" for="message">Votre message</label>
+                <textarea name="message" placeholder="Ecrivez votre message ici..." cols="10" rows="3" maxlength="500" required="" id="message"></textarea>
+                <div class="policy-wrapper">
+                    <input type="checkbox" value="policy" name="policy" required="">
+                    <label class="confidentialite-text" for="policy">En soumettant ce formulaire, j'accepte que les informations saisies soient exploitées dans le cadre de la demande de contact et de la relation commerciale qui peut en découler.</label>
+                </div>
+                <div class="modal-wrapper">
+                    <input type="reset" value="Effacer">
+                    <input type="submit" id="submit" value="Envoyer" disabled="">
+                </div>
+            </form>
+        </div>
+    `;
 
-    modalForm.setAttribute('method', 'POST');
-    modalForm.setAttribute('action', '/www/univtel/app/views/home/processing/contact.php');
-
-    modalLabelEmail.textContent = 'Votre adresse email';
-    modalInputEmail.setAttribute('type', 'email');
-    modalInputEmail.setAttribute('name', 'email');
-    modalInputEmail.setAttribute('maxlength', '90');
-    modalInputEmail.setAttribute('required', '');
-    modalInputEmail.setAttribute('placeholder', 'exemple@mail.com');
-    modalInputEmail.setAttribute('pattern', '^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-    modalInputEmail.id = 'email';
-
-    modalLabelSelect.textContent = 'Sujet de la demande';
-    modalSelect.setAttribute('name', 'subject');
-    modalSelect.id = 'subject';
-
-    modalFirstOption.setAttribute('value', '1');
-    modalFirstOption.textContent = 'Demande de devis';
-    modalSecondOption.setAttribute('value', '2');
-    modalSecondOption.textContent = "Demande d'informations";
-    modalThirdOpion.setAttribute('value', '3');
-    modalThirdOpion.textContent = 'Autre, précisez dans le message';
-
-    modalLabelTextArea.textContent = 'Votre message';
-
-    modalInputTextArea.setAttribute('name', 'message');
-    modalInputTextArea.setAttribute('placeholder', 'Ecrivez votre message ici...');
-    modalInputTextArea.setAttribute('cols', '10');
-    modalInputTextArea.setAttribute('rows', '3');
-    modalInputTextArea.setAttribute('maxlength', '500');
-    modalInputTextArea.setAttribute('required', '');
-    modalInputTextArea.id = 'message';
-
-    modalBtnReset.setAttribute('type', 'reset');
-    modalBtnReset.setAttribute('value', 'Effacer');
-    modalBtnSubmit.setAttribute('type', 'submit');
-    modalBtnSubmit.id = 'submit';
-    modalBtnSubmit.setAttribute('value', 'Envoyer');
-    modalBtnSubmit.setAttribute('disabled', '');
-
-    modalConfidentialiteInput.setAttribute('type', 'checkbox');
-    modalConfidentialiteInput.setAttribute('value', 'policy');
-    modalConfidentialiteInput.setAttribute('name', 'policy');
-    modalConfidentialiteInput.setAttribute('required', '');
-    modalConfidentialiteLabel.classList.add('confidentialite-text');
-    modalConfidentialiteLabel.textContent = "En soumettant ce formulaire, j'accepte que les informations saisies soient exploitées dans le cadre de la demande de contact et de la relation commerciale qui peut en découler.";
-
-
-    /* Ajout 'for' label */
-    // modalLabelName.htmlFor = 'name';
-    modalLabelEmail.htmlFor = 'email';
-    modalLabelSelect.htmlFor = 'subject';
-    modalLabelTextArea.htmlFor = 'message';
-    modalConfidentialiteLabel.htmlFor = 'policy';
-
-    /* Insertion des élements */
+    modalContainer.innerHTML = html;
     body.prepend(modalContainer);
-    modalContainer.appendChild(modal);
-    modal.append(modalBtnClose, modalForm);
-    modalConfidentialiteWrapper.append(modalConfidentialiteInput, modalConfidentialiteLabel);
-    // modalForm.append(modalTitle, modalLabelName, modalInputName, modalLabelEmail, modalInputEmail, modalLabelSelect, modalSelect, modalLabelTextArea, modalInputTextArea, modalBtnWrapper);
-    modalForm.append(modalTitle, modalLabelEmail, modalInputEmail, modalLabelSelect, modalSelect, modalLabelTextArea, modalInputTextArea, modalConfidentialiteWrapper, modalBtnWrapper);
-    modalSelect.append(modalFirstOption, modalSecondOption, modalThirdOpion);
-    modalBtnWrapper.append(modalBtnReset, modalBtnSubmit);
 
+    let modalBtnClose = document.querySelector('.close-modal');
     modalBtnClose.addEventListener('click', e => {
         modalContainer.remove();
     })
 
+    let modalInputEmail = document.querySelector('.input-mail');
     modalInputEmail.addEventListener('input', e => {
         let submitBtn = document.querySelector('#submit');
         if (modalInputEmail.value.match(/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,5})$/)) {
@@ -374,7 +303,6 @@ if (subMenuBtn) {
                     subMenu[x].remove();
                 }
             }
-            // createSubMenu(btn.id, btn.parentElement);
             subMenuTemplate(btn.id, btn.parentElement);
         })
     });
@@ -412,5 +340,3 @@ if (msgContactMail) {
         })
     })
 }
-
-// changer également 'non-lu' dans la page message lors d'un clic message
