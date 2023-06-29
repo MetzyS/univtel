@@ -221,93 +221,56 @@ function createModal() {
     })
 }
 
-function createSubMenu(id, HTMLElement) {
-    // Création des élements
+function subMenuTemplate(id, HTMLElement) {
+    const html = `
+    <ul class="submenu-list">
+        <li class="submenu-item">
+            <a href="/www/univtel/message/changeStatus/${id}/read" class="read-${id}">
+                <span>Lu</span>
+                <span class="read"></span>
+            </a>
+        </li>
+        <li class="submenu-item">
+            <a href="/www/univtel/message/changeStatus/${id}/unread" class="unread-${id}">
+                <span>Non lu</span>
+                <span class="unread"></span>
+            </a>
+        </li>
+        <li class="submenu-item">
+            <a href="/www/univtel/message/changeStatus/${id}/answered" class="ok-${id}">
+                <span>Traîté</span>
+                <span class="answered"></span>
+            </a>
+        </li>
+        <li class="submenu-delete">
+            <button type="button" id="delete-${id}" class="delete-btn">
+                <span class="delete">Supprimer</span>
+            </button>
+        </li>
+    </ul>
+    `;
+
     let subMenuContainer = document.createElement('div');
-    let subMenuList = document.createElement('ul');
-    let subMenuItemRead = document.createElement('li');
-    let subMenuItemUnread = document.createElement('li');
-    let subMenuItemOk = document.createElement('li');
-    let subMenuItemDelete = document.createElement('li');
-    let subMenuLinkRead = document.createElement('a');
-    let subMenuLinkUnread = document.createElement('a');
-    let subMenuLinkOk = document.createElement('a');
-    let subMenuBtnDelete = document.createElement('button');
-    // let subMenuLinkDelete = document.createElement('a');
-    let subMenuSpanRead = document.createElement('span');
-    let subMenuSpanUnread = document.createElement('span');
-    let subMenuSpanOk = document.createElement('span');
-    let subMenuItemIconRead = document.createElement('span');
-    let subMenuItemIconUnread = document.createElement('span');
-    let subMenuItemIconOk = document.createElement('span');
-    let subMenuSpanDelete = document.createElement('span');
-    let deleteModal = document.createElement('div');
-    let deleteModalMessage = document.createElement('p');
-    let deleteModalBtnWrapper = document.createElement('div');
-    let deleteModalLink = document.createElement('a');
-    let deleteModalClose = document.createElement('button');
-
-
-    // Ajout des attributs et styles
-    subMenuLinkRead.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/read');
-    subMenuLinkRead.id = 'read-' + id;
-    subMenuLinkUnread.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/unread');
-    subMenuLinkUnread.id = 'unread-' + id;
-    subMenuLinkOk.setAttribute('href', '/www/univtel/message/changeStatus/' + id + '/answered');
-    subMenuLinkOk.id = 'ok-' + id;
-    subMenuBtnDelete.setAttribute('type', 'button');
-    deleteModalLink.setAttribute('href', '/www/univtel/message/deleteMessage/' + id);
-    subMenuBtnDelete.id = 'delete-' + id;
-
-    subMenuItemRead.classList.add('submenu-item');
-    subMenuItemUnread.classList.add('submenu-item');
-    subMenuItemOk.classList.add('submenu-item');
     subMenuContainer.classList.add('submenu');
-    subMenuList.classList.add('submenu-list');
-    subMenuItemIconRead.classList.add('read');
-    subMenuItemIconUnread.classList.add('unread');
-    subMenuItemIconOk.classList.add('answered');
-    subMenuBtnDelete.classList.add('delete-btn');
-    subMenuItemDelete.classList.add('submenu-delete');
-    subMenuSpanDelete.classList.add('delete');
+    subMenuContainer.innerHTML = html;
+    HTMLElement.append(subMenuContainer);
+
+
+    const deleteModalHtml = `
+    <p class="delete-modal-text">Voulez-vous vraiment supprimer ce message ?</p>
+    <div class="delete-btn-wrapper">
+        <a href="/www/univtel/message/deleteMessage/${id}" class="btn-confirm-delete">Oui</a>
+        <button type="button" class="btn-close-delete">Non</button>
+    </div>
+    `;
+
+    let deleteModal = document.createElement('div');
     deleteModal.classList.add('delete-modal');
     deleteModal.classList.add('focus');
-    deleteModalMessage.classList.add('delete-modal-text');
-    deleteModalBtnWrapper.classList.add('delete-btn-wrapper');
-    deleteModalClose.classList.add('btn-close-delete');
-    deleteModalLink.classList.add('btn-confirm-delete');
+    deleteModal.innerHTML = deleteModalHtml;
 
 
-    subMenuSpanRead.textContent = 'Lu';
-    subMenuSpanUnread.textContent = 'Non lu';
-    subMenuSpanOk.textContent = 'Traîté';
-    subMenuSpanDelete.textContent = 'Supprimer';
-    deleteModalMessage.textContent = 'Voulez-vous vraiment supprimer ce message ?'
-    deleteModalLink.textContent = 'Oui';
-    deleteModalClose.textContent = 'Non';
-
-
-    // Positionnement dans le DOM
-    subMenuContainer.appendChild(subMenuList);
-
-    subMenuList.append(subMenuItemRead, subMenuItemUnread, subMenuItemOk, subMenuItemDelete);
-
-    subMenuItemRead.appendChild(subMenuLinkRead);
-    subMenuLinkRead.append(subMenuSpanRead, subMenuItemIconRead);
-
-    subMenuItemUnread.appendChild(subMenuLinkUnread);
-    subMenuLinkUnread.append(subMenuSpanUnread, subMenuItemIconUnread);
-
-    subMenuItemOk.appendChild(subMenuLinkOk);
-    subMenuLinkOk.append(subMenuSpanOk, subMenuItemIconOk);
-
-    subMenuItemDelete.appendChild(subMenuBtnDelete);
-    subMenuBtnDelete.appendChild(subMenuSpanDelete);
-
-    deleteModal.append(deleteModalMessage, deleteModalBtnWrapper);
-    deleteModalBtnWrapper.append(deleteModalLink, deleteModalClose);
-
-    // EventListener confirmation suppression
+    let subMenuItemDelete = document.querySelector('.submenu-delete');
     subMenuItemDelete.addEventListener('click', e => {
         let section = document.querySelector('section');
         let header = document.querySelector('header');
@@ -317,6 +280,7 @@ function createSubMenu(id, HTMLElement) {
         footer.classList.add('blur');
         document.body.insertBefore(deleteModal, document.body.firstChild);
 
+        let deleteModalClose = document.querySelector('.btn-close-delete');
         deleteModalClose.addEventListener('click', e => {
             deleteModal.remove();
             section.classList.remove('blur');
@@ -324,8 +288,6 @@ function createSubMenu(id, HTMLElement) {
             footer.classList.remove('blur');
         })
     })
-
-    HTMLElement.append(subMenuContainer);
 }
 
 
@@ -357,8 +319,8 @@ function messageTemplate(msgJson) {
     modal.classList.add('msg-modal');
     modal.classList.add('margin');
 
-    
-    
+
+
     modal.innerHTML = html;
     let footer = document.querySelector('footer');
     let sectionMessage = document.querySelector('.messages');
@@ -407,7 +369,8 @@ if (subMenuBtn) {
                     subMenu[x].remove();
                 }
             }
-            createSubMenu(btn.id, btn.parentElement);
+            // createSubMenu(btn.id, btn.parentElement);
+            subMenuTemplate(btn.id, btn.parentElement);
         })
     });
     document.addEventListener('click', e => {
