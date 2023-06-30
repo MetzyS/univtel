@@ -278,11 +278,13 @@ function messageTemplate(msgJson) {
 }
 
 function createReplyForm(htmlElement, mail) {
+    let previousMessage = document.querySelector('.detail-msg').textContent;
     const html = `
     <form action="/www/univtel/app/views/message/processing/reply.php" method="POST" class="reply-form">
         <input type="hidden" name="mail" class="" value="${mail}">
         <label for="reply" class="reply-label">Réponse :</label>
         <textarea name="reply" id="reply" class="reply-text" rows="5" placeholder="Réponse..."></textarea>
+        <textarea name="previousMessage" id="previousMessage" class="none">${previousMessage}</textarea>
         <input type="submit" class="reply-send" value="Envoyer">
     </form>
     `;

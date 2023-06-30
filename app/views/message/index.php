@@ -4,6 +4,10 @@ $component = new ComponentsMessage;
 
 <section class="messages margin">
     <?php
+    if (isset($_SESSION['reply'])) {
+        echo $_SESSION['reply'];
+        unset($_SESSION['reply']);
+    }
     $component->messageBar($data['messageCount'], $data['messageCountUnread']);
     ?>
 
