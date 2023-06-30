@@ -102,7 +102,7 @@ function createModal() {
     let modalContainer = document.createElement('div');
     modalContainer.classList.add('modal-container');
 
-    var html = `
+    const html = `
         <div class="modal">
             <button class="close-modal" type="button">X</button>
             <form class="form" method="POST" action="/www/univtel/app/views/home/processing/contact.php">
@@ -267,6 +267,26 @@ function messageTemplate(msgJson) {
         msgClose.parentNode.remove();
         sectionMessage.classList.toggle('none')
     })
+
+    let replyBtn = document.querySelector('.reply-btn');
+    let replyContainer = document.querySelector('.reply-container');
+    replyBtn.addEventListener('click', e => {
+        createReplyForm(replyContainer, msgJson['mail']);
+        replyBtn.parentElement.append(replyContainer);
+        replyBtn.remove();
+    })
+}
+
+function createReplyForm(htmlElement, mail) {
+    const html = `
+    <form action="/www/univtel/app/views/message/processing/reply.php" method="POST" class="reply-form">
+        <input type="hidden" name="mail" class="" value="${mail}">
+        <label for="reply" class="reply-label">Réponse :</label>
+        <textarea name="reply" id="reply" class="reply-text" rows="5" placeholder="Réponse..."></textarea>
+        <input type="submit" class="reply-send" value="Envoyer">
+    </form>
+    `;
+    htmlElement.innerHTML = html;
 }
 
 

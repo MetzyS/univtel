@@ -1310,15 +1310,40 @@ textarea::placeholder {
 
 .detail-msg {
     padding: 10px;
-    margin-top: 5px;
+    margin: 20px 0;
 }
 
 .reply-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .reply-btn {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    color: white;
+    margin-top: 15px;
+    padding: 5px;
+}
+
+.reply-form {
+    width: 100%;
+}
+
+.reply-label {
+    color: gray;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.reply-text {
+    padding: unset;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.reply-send {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    color: white;
     padding: 5px;
 }
