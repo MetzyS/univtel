@@ -332,10 +332,18 @@ if (msgContactMail) {
             messageFetch('http://localhost/www/univtel/app/views/message/processing/message.php?id=' + msgId);
 
             // Changement statut 'non-lu' => 'lu'
-            btnRead = document.getElementById(msgId);
+            let btnRead = document.getElementById(msgId);
             if (btnRead.classList.contains('unread')) {
                 btnRead.classList.remove('unread');
                 btnRead.classList.add('read');
+            }
+            let spanUnread = document.querySelector('.messages-unread-nb');
+            if (spanUnread) {
+                let nbUnread = spanUnread.textContent;
+                if (nbUnread) {
+                    nbUnread -= 1;
+                    spanUnread.textContent = nbUnread;
+                }
             }
         })
     })
