@@ -104,7 +104,7 @@ function createModal() {
 
     const html = `
         <div class="modal">
-            <button class="close-modal" type="button">X</button>
+            <div class="close-modal-container"><button class="close-modal" type="button">X</button></div>
             <form class="form" method="POST" action="/www/univtel/app/views/home/processing/contact.php">
                 <p>Formulaire de contact</p>
                 <label class="form-label" for="email">Votre adresse email</label>
@@ -231,18 +231,18 @@ function subMenuTemplate(id, HTMLElement) {
  */
 function messageTemplate(msgJson) {
     const html = `
-        <button class="close-msg">X</button>
+        <div class="close-container border-tl border-tr"><button class="close-msg">X</button></div>
         <div class="detail-grid">
             <span class="detail-title">Email :</span>
-            <span>${msgJson['mail']}</span>
+            <span class="detail-border">${msgJson['mail']}</span>
         </div>
         <div class="detail-grid">
             <span class="detail-title">Date :</span>
-            <span>${msgJson['sent_at']}</span>
+            <span class="detail-border">${msgJson['sent_at']}</span>
         </div>
         <div class="detail-grid">
             <span class="detail-title">Sujet :</span>
-            <span>${msgJson['subject']}</span>
+            <span class="detail-border">${msgJson['subject']}</span>
         </div>
         <p class="detail-msg">${decodeURIComponent(msgJson['message'])}</p>
         <div class="reply-container">
@@ -261,10 +261,11 @@ function messageTemplate(msgJson) {
     sectionMessage.classList.toggle('none');
     body.insertBefore(modal, footer);
 
+    addBorderFirstTitle(body);
 
     let msgClose = document.querySelector('.close-msg')
     msgClose.addEventListener('click', e => {
-        msgClose.parentNode.remove();
+        msgClose.parentNode.parentNode.remove();
         sectionMessage.classList.toggle('none')
     })
 
@@ -289,6 +290,20 @@ function createReplyForm(htmlElement, mail) {
     </form>
     `;
     htmlElement.innerHTML = html;
+}
+
+function addBorderFirstTitle(HTMLElement) {
+    let detailTitle = document.querySelectorAll('.detail-title');
+    let detailGrid = document.querySelectorAll('.detail-grid');
+    if (detailTitle && detailGrid) {
+        detailTitle[0].classList.add('border-tl');
+        detailGrid[0].classList.add('border-tl');
+        detailGrid[0].classList.add('border-tr');
+
+        detailTitle[detailTitle.length - 1].classList.add('border-bl');
+        detailGrid[detailGrid.length - 1].classList.add('border-bl');
+        detailGrid[detailGrid.length - 1].classList.add('border-br');
+    }
 }
 
 
@@ -355,14 +370,12 @@ if (msgContactMail) {
 
             // Changement statut 'non-lu' => 'lu'
             let btnRead = document.getElementById(msgId);
-            if (btnRead.classList.contains('unread')) {
-                btnRead.classList.remove('unread');
-                btnRead.classList.add('read');
-            }
             let spanUnread = document.querySelector('.messages-unread-nb');
             if (spanUnread) {
                 let nbUnread = spanUnread.textContent;
-                if (nbUnread) {
+                if (nbUnread >= 1 && element.nextElementSibling.nextElementSibling.nextElementSibling.classList.contains('unread')) {
+                    btnRead.classList.remove('unread');
+                    btnRead.classList.add('read');
                     nbUnread -= 1;
                     spanUnread.textContent = nbUnread;
                 }

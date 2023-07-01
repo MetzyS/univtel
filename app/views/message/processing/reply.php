@@ -41,8 +41,6 @@ if (isset($_SESSION['user']) && isset($_POST['mail']) && isset($_POST['reply']))
         <p style="font-style:italic; color:gray; font-family: Arial;"> Pour rappel, voici votre message:<br>' . $previousMessage . "</p>
         <br>
         <p style='font-family:Arial;'>En vous remerciant de nous avoir contacté,<br>L'équipe de l'Univers du Téléphone.
-        <br>" . '
-        <img alt="logo" src="https://www.universdutelephone.fr/assets/logo_desktop.jpg" width="50">
         <br>
         09 51 53 52 46
         <br>
@@ -50,7 +48,7 @@ if (isset($_SESSION['user']) && isset($_POST['mail']) && isset($_POST['reply']))
         <br>
         09 51 53 52 46
         <br>
-        Béziers</p>';
+        Béziers</p>";
         $mail->CharSet = 'UTF-8';
         $mail->Encoding = 'base64';
 
